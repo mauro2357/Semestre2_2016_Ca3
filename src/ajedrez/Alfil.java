@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 /**
  * Es un tipo de ficha en la cual se realizan sus respectivas acciones
  * @author Julián Carvajal Montoya
- * @author Alejandro Castañeda Ramírez
+ * @author Alejandro Castañeda Ramírez Hola
  */
 public class Alfil extends Ficha {
     public Alfil(int PosicionX, int PosicionY, String Signo, int Color) {
