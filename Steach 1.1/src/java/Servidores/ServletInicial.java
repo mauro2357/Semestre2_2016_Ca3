@@ -54,6 +54,7 @@ public class ServletInicial extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
@@ -74,6 +75,19 @@ public class ServletInicial extends HttpServlet {
         String correo = request.getParameter("text_Correo");
         String contrasena = request.getParameter("textb_Contrasena");
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
+        
+        Usuario usu = new Usuario();
+        
+        usu.setUsu_nombre(nombre);
+        usu.setUsu_apellidos(apellidos);
+        usu.setUsu_correo(correo);
+        usu.setUsu_contra(contrasena);
+        usu.setUsu_fecha_nacimiento(fechaNacimiento);
+        
+        request.setAttribute("mensajeAprobacion", "Registrado exitosamente");
+        request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+        
+        
         
         
     }
