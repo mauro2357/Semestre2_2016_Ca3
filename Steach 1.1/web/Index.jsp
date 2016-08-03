@@ -87,30 +87,14 @@
     text-decoration: none#000000;
   }
   
-#boton_registrar{
-    background:#080808;
-    color: #f2f2f2;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    position: relative;
-    box-sizing: border-box;
-    transition: all 500ms ease;
-    text-decoration:none; 
+#imagen
+{
+    
 }
-
- #boton_registrar:hover{
-    color:#EFF;
-    background: #3a7999;
-    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-  }
- 
 </style>
 </head>
 
-<body>
+<body background = "Fondo2.jpg">
   <div id="barra_superior">
     <ul class="navegacion">
       <li><a href="Registro.jsp">¿No tienes Cuenta? Regístrate</a></li> 
