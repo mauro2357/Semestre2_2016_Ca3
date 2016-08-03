@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Steach</title>
+<title>Steach2</title>
 <style>  
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
