@@ -38,13 +38,8 @@ public class ServletInicial extends HttpServlet {
         String contrasena = request.getParameter("textb_Contrasena");
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
         
-        Usuario usu = new Usuario();
-        
-        usu.setUsu_nombre(nombre);
-        usu.setUsu_apellidos(apellidos);
-        usu.setUsu_correo(correo);
-        usu.setUsu_contra(contrasena);
-        usu.setUsu_fecha_nacimiento(fechaNacimiento);
+        Usuario usu = new Usuario("1",nombre,apellidos,correo,contrasena,fechaNacimiento);
+
         //ESto es para recibir los archivos de la vista index
         
         request.setAttribute("mensajeAprobacion", "Registrado exitosamente");

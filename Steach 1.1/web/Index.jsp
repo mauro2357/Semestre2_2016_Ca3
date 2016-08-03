@@ -156,7 +156,7 @@
           <input type="text" id="textb_Correo" name="textb_Correo">
           <br> <br>
           <label>Contra </label>
-          <input type="text" id="textb_Contrasena" name="textb_Contrasena">
+          <input type="pasword" id="textb_Contrasena" name="textb_Contrasena">
           <br> <br>
           <label>Fecha de nacimiento </label>
           <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento">
