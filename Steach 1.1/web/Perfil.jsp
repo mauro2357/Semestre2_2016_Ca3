@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Perfil
+    Created on : 2/08/2016, 11:25:24 PM
+    Author     : Andres
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,43 +125,9 @@
     </div>
   </div>
   <div id="contenedor">
-    <h1>Steach</h1>
+    <h1>Bienvenido a Steach</h1>
            
 <p><strong>Steach, una aplicacion para el aprendizaje</strong> desarrollada por Ca3 equipada con los servicios necesarios para que puedas contactar a personas que te ensenen lo que necesitas. </p>
- 
-<h2>Historias de usuario</h2>
-           
-<ul>
-   <li>Quiero registrarme.</li>
-   <li>dentro del segungo li.</li>
-</ul>
- 
-<blockquote><p>Mirar historias</p></blockquote>
- 
-  </div>
-  <div id="contenedorRegistro">
-      <h1>
-          Registrate
-     </h1>
-      <h3>
-          <br>
-          <label>Nombre </label>
-          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" >
-          <label>Apellidos </label>
-          <input type="text" id="textb_Apellidos" name="textb_Apellidos" placeholder="Apellidos">
-          <br> <br>
-          <label>Correo </label>
-          <input type="text" id="textb_Correo" name="textb_Correo">
-          <br> <br>
-          <label>Contra </label>
-          <input type="text" id="textb_Contrasena" name="textb_Contrasena">
-          <br> <br>
-          <label>Fecha de nacimiento </label>
-          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento">
-          <br> <br> <br>
-          <a id="boton_registrar" href="#"> Registrar</a>
-       
-      </h3>     
-  </div>
+
 </body>
 </html>

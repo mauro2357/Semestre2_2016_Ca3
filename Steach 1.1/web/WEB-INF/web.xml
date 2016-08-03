@@ -4,13 +4,24 @@
         <servlet-name>ServletPrincipal</servlet-name>
         <servlet-class>ServletPrincipal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletInicial</servlet-name>
+        <servlet-class>Controlador.ServletInicial</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInicial</servlet-name>
+        <url-pattern>/servletInicial.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>Index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
