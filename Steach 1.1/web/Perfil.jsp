@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Steach2</title>
+<title>Perfil Steach</title>
 <style>  
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
