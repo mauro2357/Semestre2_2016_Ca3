@@ -45,6 +45,7 @@ public class ServletInicial extends HttpServlet {
         usu.setUsu_correo(correo);
         usu.setUsu_contra(contrasena);
         usu.setUsu_fecha_nacimiento(fechaNacimiento);
+        //ESto es para recibir los archivos de la vista index
         
         request.setAttribute("mensajeAprobacion", "Registrado exitosamente");
         request.getRequestDispatcher("Perfil.jsp").forward(request, response);
