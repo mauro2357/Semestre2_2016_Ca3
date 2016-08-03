@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Inicio Steach</title>
+<title>Registro Steach</title>
 <style>  
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
@@ -59,32 +59,30 @@
   }
    
   /* contenedor */
-  #InfoGeneral{
+  #contenedor{
     /*Ancho*/
-    width:500px;
+    width:600px;
     /*Margen*/
     padding:10px; 
-    background: darkkhaki;
-    margin:10px;
+    background:#EFF;
+    margin:20px;
     border-radius:10px;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     float:left;
-    font: 100% sans-serif;
   }
   
-    #Videos{
-    width:450px;
-    padding:150px;
-    background:burlywood;
+    #contenedorRegistro{
+    width:600px;
+    padding:10px;
+    background:#EFF;
     margin:20px;
     border-radius:10px;
-    -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0 , 0, 0.3);
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    box-shadow: 10px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     float:right;
-    text-decoration: none#000000;
   }
   
 #boton_registrar{
@@ -105,43 +103,70 @@
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    
   }
- 
+    
 </style>
 </head>
 
 <body>
   <div id="barra_superior">
     <ul class="navegacion">
-      <li><a href="Registro.jsp">¿No tienes Cuenta? Regístrate</a></li> 
-      <li><a href="IniciarSesion.jsp">Inicia Sesión</a></li> 
-      <li><a href="QuinesSomos.jsp">Quienes Somos</a></li> 
-      <li><a href="PulicacionesPopulares.jsp">Publicaciones Populares</a></li> 
-      <li><a href="ProfesoresMejorCalificados.jsp">Profesores Mejor Calificados</a></li> 
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Acerca de nosotros</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
     </ul>
+    <div class="info-usuario">
+    <ul class="navegacion">
+      <li><a href="#">Perfil</a></li>
+      <li><a href="#">Notificaciones</a></li>
+      <li><a href="#">Salir</a></li>
+    </ul>
+    </div>
   </div>
-    <div id = "imagen"><img src="Ca3.png" width="10%" align="right"></div> 
-    
-  <div id="InfoGeneral">
+  <div id="contenedor">
     <h1>Steach</h1>
            
-    <p><strong>Steach, una aplicacion para el aprendizaje</strong> <br>
-        <adress>Steach S.A.S Una Marca de Ca3, Donde tus conocimientos Son lo mas importante.</adress> </p>
-
+<p><strong>Steach, una aplicacion para el aprendizaje</strong> desarrollada por Ca3 equipada con los servicios necesarios para que puedas contactar a personas que te ensenen lo que necesitas. </p>
+ 
+<h2>Historias de usuario</h2>
+           
+<ul>
+   <li>Quiero registrarme.</li>
+   <li>dentro del segungo li.</li>
+</ul>
+ 
+<blockquote><p>Mirar historias</p></blockquote>
+ 
   </div>
-    <div id = "Videos">
-        <center>
-            <h3>Mira una Galería de Videos de como Funciona Nuestro Proyecto
-            dentro del cual estás a punto de ser parte.
-            Te agradecemos por visitarnos, si quieres saber mas sobre nostros ve hacia arriba
-            y da en la opcion "Quienes Somos". <br></h3>
-            A continuación los videos.
-            <h4 align="left">El primero es The Black Eyes Peas, Escúchalo</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/uSD4vsh1zDA" frameborder="0" allowfullscreen></iframe>
-            <h4 align="left">El segundo es The Black Eyes Peas pero con pump it, Escúchalo</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZaI2IlHwmgQ" frameborder="0" allowfullscreen></iframe>
-        </center>
-        
-    </div>
+  <div id="contenedorRegistro">
+      <h1>
+          Registrate
+     </h1>
+      <h3>
+          <form action="servletInicial.do" method="post">
+          <br>
+          <label>Nombre </label>
+          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" >
+          <label>Apellidos </label>
+          <input type="text" id="textb_Apellidos" name="textb_Apellidos" placeholder="Apellidos">
+          <br> <br>
+          <label>Correo </label>
+          <input type="text" id="textb_Correo" name="textb_Correo">
+          <br> <br>
+          <label>Contra </label>
+          <input type="text" id="textb_Contrasena" name="textb_Contrasena">
+          <br> <br>
+          <label>Fecha de nacimiento </label>
+          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento">
+          <br> <br> <br>
+          <a type="submit" id="boton_registrar" href="servletInicial.do"> Registrar</a>
+          </form>
+          
+      </h3>     
+          
+      
+  </div>
 </body>
 </html>
