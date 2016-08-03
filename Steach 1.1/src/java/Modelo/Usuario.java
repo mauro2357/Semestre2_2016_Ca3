@@ -14,15 +14,14 @@ public class Usuario {
     String usu_contra;
     //Constructor
 
-    public Usuario(String usu_id, String usu_nombre, String usu_apellidos, String usu_fecha_nacimiento, String usu_correo, String usu_contra) {
-        this.usu_id = usu_id;
-        this.usu_nombre = usu_nombre;
-        this.usu_apellidos = usu_apellidos;
-        this.usu_fecha_nacimiento = usu_fecha_nacimiento;
-        this.usu_correo = usu_correo;
-        this.usu_contra = usu_contra;
+    public Usuario() {
+        usu_id = "";
+        usu_nombre = "";
+        usu_apellidos = "";
+        usu_fecha_nacimiento = "";
+        usu_correo = "";
+        usu_contra = "";
     }
-
 
     public String getUsu_id() {
         return usu_id;
