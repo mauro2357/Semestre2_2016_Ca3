@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andres
  */
-public class ServletInicial extends HttpServlet {
+public class ServletRegistrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +31,6 @@ public class ServletInicial extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Para recibir los datos de la pagina html
         String nombre = request.getParameter("textb_Nombre");
         String apellidos = request.getParameter("text_Apellidos");
         String correo = request.getParameter("text_Correo");
@@ -39,18 +38,31 @@ public class ServletInicial extends HttpServlet {
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
         
         Usuario usu = new Usuario();
-        
         usu.setUsu_nombre(nombre);
         usu.setUsu_apellidos(apellidos);
         usu.setUsu_correo(correo);
         usu.setUsu_contra(contrasena);
         usu.setUsu_fecha_nacimiento(fechaNacimiento);
-        //ESto es para recibir los archivos de la vista index
         
-        request.setAttribute("mensajeAprobacion", "Registrado exitosamente");
+        request.getSession().setAttribute("Usuario", usu);
+        
         request.getRequestDispatcher("Perfil.jsp").forward(request, response);
         
+        
+        
+        /*
+        
+        
+        if(nombre.equals("") || apellidos.equals("") || correo.equals("") || contrasena.equals("") || fechaNacimiento.equals("")){
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+        }
+        else{
 
+
+            request.setAttribute("mensajeAprobacion", "Registrado exitosamente");
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+        }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
