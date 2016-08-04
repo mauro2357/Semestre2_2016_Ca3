@@ -1,6 +1,6 @@
 <%-- 
     Document   : Index
-    Created on : 3/08/2016, 10:48:15 AM
+    Created on : 3/08/2016, 12:30:35 PM
     Author     : Andres
 --%>
 
@@ -103,7 +103,15 @@
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    
+  }
+  
+  #textb_contraint{
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  #boton_ingresar{
+      margin-right: 30px;
   }
     
 </style>
@@ -112,16 +120,18 @@
 <body>
   <div id="barra_superior">
     <ul class="navegacion">
-      <li><a href="#">Inicio</a></li>
+      <li><a href="Index.jsp">Inicio</a></li>
       <li><a href="#">Acerca de nosotros</a></li>
       <li><a href="#">Servicios</a></li>
       <li><a href="#">Contacto</a></li>
     </ul>
     <div class="info-usuario">
     <ul class="navegacion">
-      <li><a href="#">Perfil</a></li>
-      <li><a href="#">Notificaciones</a></li>
-      <li><a href="#">Salir</a></li>
+      <from  action="ServletIniciarSesion" method="post">
+      <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo" required></li>
+      <li><input type="text" id="textb_contraint" name="textb_contraint" placeholder="Contra" required></li>
+      <li><input type="submit" id="boton_ingresar" value="Ingresar">  </input></li> 
+      </from>
     </ul>
     </div>
   </div>
@@ -145,24 +155,26 @@
           Registrate
      </h1>
       <h3>
-          <form action="servletInicial.do" method="post">
           <br>
+          <form action="ServletRegistrar" method="post">
           <label>Nombre </label>
-          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" >
+          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" required>
           <label>Apellidos </label>
-          <input type="text" id="textb_Apellidos" name="textb_Apellidos" placeholder="Apellidos">
+          <input type="text" id="textb_Apellidos" name="text_Apellidos" placeholder="Apellidos" required>
           <br> <br>
           <label>Correo </label>
-          <input type="text" id="textb_Correo" name="textb_Correo">
+          <input type="text" id="textb_Correo" name="textb_Correo" required>
           <br> <br>
           <label>Contra </label>
-          <input type="pasword" id="textb_Contrasena" name="textb_Contrasena">
+          <input type="text" id="textb_Contrasena" name="textb_Contrasena" required>
           <br> <br>
           <label>Fecha de nacimiento </label>
-          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento">
+          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento" required>
           <br> <br> <br>
-          <a type="submit" id="boton_registrar" href="servletInicial.do"> Registrar</a>
+          <input type="submit" id="boton_registrar" value="Registrar"></input>
           </form>
+
+          
           
       </h3>     
           
