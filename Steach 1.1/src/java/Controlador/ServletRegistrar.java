@@ -31,27 +31,22 @@ public class ServletRegistrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-String nombre = request.getParameter("textb_Nombre");
+        String nombre = request.getParameter("textb_Nombre");
         String apellidos = request.getParameter("text_Apellidos");
-        String correo = request.getParameter("textb_Correo");
+        String correo = request.getParameter("text_Correo");
         String contrasena = request.getParameter("textb_Contrasena");
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
         
         Usuario usu = new Usuario();
-        UsuarioDAO usuDAO = new UsuarioDAO();
-        
         usu.setUsu_nombre(nombre);
         usu.setUsu_apellidos(apellidos);
         usu.setUsu_correo(correo);
         usu.setUsu_contra(contrasena);
         usu.setUsu_fecha_nacimiento(fechaNacimiento);
         
-        usuDAO.registrarUsuario(usu);
-        
         request.getSession().setAttribute("Usuario", usu);
         
         request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-        
         
         
         

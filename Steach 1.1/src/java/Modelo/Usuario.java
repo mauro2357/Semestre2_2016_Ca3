@@ -6,6 +6,7 @@ package Modelo;
  * @author Andres
  */
 public class Usuario {
+    String usu_id;
     String usu_nombre;
     String usu_apellidos;
     String usu_fecha_nacimiento;
@@ -14,11 +15,16 @@ public class Usuario {
     //Constructor
 
     public Usuario() {
+        usu_id = "";
         usu_nombre = "";
         usu_apellidos = "";
         usu_fecha_nacimiento = "";
         usu_correo = "";
         usu_contra = "";
+    }
+
+    public String getUsu_id() {
+        return usu_id;
     }
 
     public String getUsu_nombre() {
@@ -39,6 +45,10 @@ public class Usuario {
 
     public String getUsu_contra() {
         return usu_contra;
+    }
+
+    public void setUsu_id(String usu_id) {
+        this.usu_id = usu_id;
     }
 
     public void setUsu_nombre(String usu_nombre) {

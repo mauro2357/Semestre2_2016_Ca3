@@ -123,15 +123,14 @@
       <li><a href="Index.jsp">Inicio</a></li>
       <li><a href="#">Acerca de nosotros</a></li>
       <li><a href="#">Servicios</a></li>
-      <li><a href="ServletIniciarSesion">Contacto</a></li>
+      <li><a href="#">Contacto</a></li>
     </ul>
     <div class="info-usuario">
     <ul class="navegacion">
       <from  action="ServletIniciarSesion" method="post">
       <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo" required></li>
       <li><input type="text" id="textb_contraint" name="textb_contraint" placeholder="Contra" required></li>
-      <li><a href="ServletIniciarSesion" id="boton_ingresar" value="Ingresar">Ingresar</a>
-      </input>
+      <li><input type="submit" id="boton_ingresar" value="Ingresar">  </input></li> 
       </from>
     </ul>
     </div>
@@ -173,7 +172,10 @@
           <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento" required>
           <br> <br> <br>
           <input type="submit" id="boton_registrar" value="Registrar"></input>
-          </form>          
+          </form>
+
+          
+          
       </h3>     
           
       
