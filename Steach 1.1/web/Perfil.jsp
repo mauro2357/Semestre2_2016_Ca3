@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registro Steach</title>
+<title>Perfil</title>
 <style>  
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
@@ -30,19 +30,19 @@
   /*Para que sea de una sola linea*/
   #barra_superior ul{
     list-style:none;
-    padding:0; margin:0;  
+    padding:0; margin:auto;  
     float:left;
   }
   /*Para que las opciones esten en un solo renglon*/
   #barra_superior ul li{
     float:left;
-    padding:2px; margin:0;
+    padding:2px; margin:auto;
   }
   /*Para que queden como botones las opciones*/
   #barra_superior a{
     display:block;
-    height:20px;
-    line-height:20px;
+    height:50px;
+    line-height:50px;
     padding:0 5px;
     text-decoration:none;
     color:#FFF;
@@ -53,58 +53,89 @@
     color:#000;
     background:#EFF;
   }
+   #barra_superior w{
+    display:block;
+    font-size: 50px;
+    height:50px;
+    line-height:50px;
+    padding:0 0;
+    text-decoration:none;
+    color:#ff0000;
+    border-radius:5px;
+  }
+  
+  #barra_superior w:hover{
+    color:#3a7999;
+    background:#000000;
+  }
   /*Para que la info us se haga a la derecha*/
   #barra_superior .info-usuario{
     float:right; 
   }
-   
+  
+  #barra_superior .nombre-app{
+    float:start;
+    overflow: visible;
+  }
+  #imagen{
+      max-width: 50px;
+      max-height: 50px;
+  }
   /* contenedor */
-  #contenedor{
+  #calificacion{
     /*Ancho*/
-    width:600px;
+    min-width:200px;
     /*Margen*/
-    padding:10px; 
+    /*padding:5px 20px;*/ 
     background:#EFF;
-    margin:20px;
+    margin:auto;
     border-radius:10px;
+    border-color: #cccccc;
+    border-style: ridge;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    float:top;
+    overflow: auto;
+  }
+  #calificacion b{
+      display: table;
+  }
+    #foto-perfil{
+    /*Ancho*/
+    width:100px;
+    height: 100px;
+    /*Margen*/
+    /*padding:5px;*/ 
+    background:#EFF;
+    margin:auto;
+    border-radius:10px;
+    border-color: #cccccc;
+    border-style: ridge;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     float:left;
   }
   
-    #contenedorRegistro{
-    width:600px;
-    padding:10px;
+  #habilidades {
+         /*Ancho*/
+    width:200px;
+    height:200px;
+    /*Margen*/
+    /*padding:5px;*/ 
     background:#EFF;
-    margin:20px;
+    margin:auto;
     border-radius:10px;
+    border-color: #cccccc;
+    border-style: ridge;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    float:right;
+    float:left; 
   }
-  
-#boton_registrar{
-    background:#080808;
-    color: #f2f2f2;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    position: relative;
-    box-sizing: border-box;
-    transition: all 500ms ease;
-    text-decoration:none; 
-}
 
- #boton_registrar:hover{
-    color:#EFF;
-    background: #3a7999;
-    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    
-  }
+  
     
 </style>
 </head>
@@ -112,61 +143,73 @@
 <body>
   <div id="barra_superior">
     <ul class="navegacion">
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Acerca de nosotros</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="#">Contacto</a></li>
+        <li><a href="http://localhost:8080/Steach%201.1/Perfil.jsp" id = "imagen"><img src="http://g01.a.alicdn.com/kf/HTB1sQEGHVXXXXXyXpXXq6xXFXXXL/Para-el-caso-de-huawei-ascend-mate-7-3d-minions-cartoon-stitch-sulley-tigger-perro-zebra.jpg_50x50.jpg"></a></li>
     </ul>
     <div class="info-usuario">
     <ul class="navegacion">
-      <li><a href="#">Perfil</a></li>
+        <li><a href="#">Perfil</a></li>
       <li><a href="#">Notificaciones</a></li>
       <li><a href="#">Salir</a></li>
     </ul>
     </div>
+    <div class="nombre-app">
+    <ul class="navegacion">
+        <li><a href="http://localhost:8080/Steach%201.1/Perfil.jsp"><w>Steach</w></a></li>
+    </ul>
+    </div>
   </div>
-  <div id="contenedor">
-    <h1>Steach</h1>
-           
-<p><strong>Steach, una aplicacion para el aprendizaje</strong> desarrollada por Ca3 equipada con los servicios necesarios para que puedas contactar a personas que te ensenen lo que necesitas. </p>
- 
-<h2>Historias de usuario</h2>
-           
-<ul>
-   <li>Quiero registrarme.</li>
-   <li>dentro del segungo li.</li>
-</ul>
- 
-<blockquote><p>Mirar historias</p></blockquote>
- 
+  <div id="foto-perfil">
+    <h1>Foto</h1>  
   </div>
-  <div id="contenedorRegistro">
-      <h1>
-          Registrate
-     </h1>
-      <h3>
-          <form action="servletInicial.do" method="post">
-          <br>
-          <label>Nombre </label>
-          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" >
-          <label>Apellidos </label>
-          <input type="text" id="textb_Apellidos" name="textb_Apellidos" placeholder="Apellidos">
-          <br> <br>
-          <label>Correo </label>
-          <input type="text" id="textb_Correo" name="textb_Correo">
-          <br> <br>
-          <label>Contra </label>
-          <input type="text" id="textb_Contrasena" name="textb_Contrasena">
-          <br> <br>
-          <label>Fecha de nacimiento </label>
-          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento">
-          <br> <br> <br>
-          <a type="submit" id="boton_registrar" href="servletInicial.do"> Registrar</a>
-          </form>
-          
-      </h3>     
-          
-      
+  <div id="calificacion">
+    <h1>Calificame</h1>
+    <b> ¿Mis explicaciones son claras?
+        <select>
+            <optgroup label="calificame">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </optgroup>
+        </select>
+    </b>
+    <b> ¿Mis Aportes son valiosos?
+        <select>
+            <optgroup label="calificame">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </optgroup>
+        </select>
+    </b>
+    <b> ¿Mis conocimientos son acordes alas habilidades que ofresco?
+        <select>
+            <optgroup label="calificame">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </optgroup>
+        </select>
+    </b>
+    <b> ¿Mis Respuestas son rapidas?
+        <select>
+            <optgroup label="calificame">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </optgroup>
+        </select>
+    </b>
   </div>
+<!--    <div id="habilidades">
+        <h1>Habilidaes que me gusta enseñar</h1>
+    </div>-->
 </body>
 </html>
