@@ -50,7 +50,7 @@ String nombre = request.getParameter("textb_Nombre");
         
         request.getSession().setAttribute("Usuario", usu);
         
-        request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+        request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
         
         
         
