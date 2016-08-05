@@ -63,11 +63,6 @@
     color:#ff0000;
     border-radius:5px;
   }
-  
-  #barra_superior w:hover{
-    color:#3a7999;
-    background:#000000;
-  }
   /*Para que la info us se haga a la derecha*/
   #barra_superior .info-usuario{
     float:right; 
@@ -85,6 +80,7 @@
   #calificacion{
     /*Ancho*/
     min-width:200px;
+    /*max-height: 200px;*/
     /*Margen*/
     /*padding:5px 20px;*/ 
     background:#EFF;
@@ -124,7 +120,7 @@
     height:200px;
     /*Margen*/
     /*padding:5px;*/ 
-    background:#EFF;
+    background: #66ccff;
     margin:auto;
     border-radius:10px;
     border-color: #cccccc;
@@ -143,7 +139,7 @@
 <body>
   <div id="barra_superior">
     <ul class="navegacion">
-        <li><a href="http://localhost:8080/Steach%201.1/Perfil.jsp" id = "imagen"><img src="http://g01.a.alicdn.com/kf/HTB1sQEGHVXXXXXyXpXXq6xXFXXXL/Para-el-caso-de-huawei-ascend-mate-7-3d-minions-cartoon-stitch-sulley-tigger-perro-zebra.jpg_50x50.jpg"></a></li>
+        <li><a href="Index.jsp" id = "imagen"><img src="http://g01.a.alicdn.com/kf/HTB1sQEGHVXXXXXyXpXXq6xXFXXXL/Para-el-caso-de-huawei-ascend-mate-7-3d-minions-cartoon-stitch-sulley-tigger-perro-zebra.jpg_50x50.jpg"></a></li>
     </ul>
     <div class="info-usuario">
     <ul class="navegacion">
@@ -154,61 +150,73 @@
     </div>
     <div class="nombre-app">
     <ul class="navegacion">
-        <li><a href="http://localhost:8080/Steach%201.1/Perfil.jsp"><w>Steach</w></a></li>
+        <li><w>Steach</w></li>
     </ul>
     </div>
   </div>
-  <div id="foto-perfil">
-    <h1>Foto</h1>  
-  </div>
+ 
   <div id="calificacion">
-    <h1>Calificame</h1>
-    <b> ¿Mis explicaciones son claras?
-        <select>
-            <optgroup label="calificame">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </optgroup>
-        </select>
-    </b>
-    <b> ¿Mis Aportes son valiosos?
-        <select>
-            <optgroup label="calificame">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </optgroup>
-        </select>
-    </b>
-    <b> ¿Mis conocimientos son acordes alas habilidades que ofresco?
-        <select>
-            <optgroup label="calificame">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </optgroup>
-        </select>
-    </b>
-    <b> ¿Mis Respuestas son rapidas?
-        <select>
-            <optgroup label="calificame">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </optgroup>
-        </select>
-    </b>
+      <center>
+          <h2 align="left">Julian Carvajal Montoya</h2>
+            <div id="foto-perfil">
+                <h1>Foto</h1>  
+            </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+            <h1>Calificame</h1>
+            <form>
+                <b> ¿Mis explicaciones son claras?
+                <select>
+                    <optgroup label="calificame">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </optgroup>
+                </select>
+            </b>
+            <b> ¿Mis Aportes son valiosos?
+                <select>
+                    <optgroup label="calificame">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </optgroup>
+                </select>
+            </b>
+            <b> ¿Mis conocimientos son acordes alas habilidades que ofresco?
+                <select>
+                    <optgroup label="calificame">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </optgroup>
+                </select>
+            </b>
+            <b> ¿Mis Respuestas son rapidas?
+                <select>
+                    <optgroup label="calificame">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </optgroup>
+                </select>
+            </b> 
+                </form>
+      </center>
+    
   </div>
-<!--    <div id="habilidades">
-        <h1>Habilidaes que me gusta enseñar</h1>
-    </div>-->
+  <div id="habilidades">
+    <h4>Habilidaes que me gusta enseñar</h4>
+  </div>
 </html>
