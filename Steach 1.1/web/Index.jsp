@@ -92,16 +92,26 @@
     
 }
 </style>
+    <div class="info-usuario">
+    <ul class="navegacion">
+
+      </from>
+    </ul>
+    </div>
 </head>
 
 <body background = "Fondo2.jpg">
   <div id="barra_superior">
     <ul class="navegacion">
-      <li><a href="Registro.jsp">¿No tienes Cuenta? Regístrate</a></li> 
-      <li><a href="IniciarSesion.jsp">Inicia Sesión</a></li> 
+      <li><a href="Registro.jsp">¿No tienes Cuenta? Regístrate</a></li>
       <li><a href="QuinesSomos.jsp">Quienes Somos</a></li> 
       <li><a href="PulicacionesPopulares.jsp">Publicaciones Populares</a></li> 
-      <li><a href="ProfesoresMejorCalificados.jsp">Profesores Mejor Calificados</a></li> 
+      <li><a href="ProfesoresMejorCalificados.jsp">Profesores Mejor Calificados</a></li>
+        <form  action="ServletIniciarSesion" method="post">
+            <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo" required></li>
+            <li><input type="text" id="textb_contraint" name="textb_contraint" placeholder="Contra" required></li>
+            <li><input type="submit" id="boton_ingresar" value="Ingresar">  </input></li> 
+        <form/>
     </ul>
   </div>
     <div id = "imagen"><img src="Ca3.png" width="10%" align="right"></div> 

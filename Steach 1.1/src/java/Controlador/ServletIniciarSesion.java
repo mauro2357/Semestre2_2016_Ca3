@@ -33,6 +33,7 @@ public class ServletIniciarSesion extends HttpServlet {
         
         String correo = request.getParameter("textb_correoint");
         String contrasena = request.getParameter("textb_contraint");
+        String btn = request.getParameter("Registrar");
         
         
         

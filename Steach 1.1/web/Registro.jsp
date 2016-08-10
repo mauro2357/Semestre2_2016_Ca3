@@ -125,15 +125,7 @@
       <li><a href="#">Servicios</a></li>
       <li><a href="#">Contacto</a></li>
     </ul>
-    <div class="info-usuario">
-    <ul class="navegacion">
-      <from  action="ServletIniciarSesion" method="post">
-      <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo" required></li>
-      <li><input type="text" id="textb_contraint" name="textb_contraint" placeholder="Contra" required></li>
-      <li><input type="submit" id="boton_ingresar" value="Ingresar">  </input></li> 
-      </from>
-    </ul>
-    </div>
+
   </div>
   <div id="contenedor">
     <h1>Steach</h1>
@@ -157,21 +149,21 @@
       <h3>
           <br>
           <form action="ServletRegistrar" method="post">
-          <label>Nombre </label>
-          <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" required>
-          <label>Apellidos </label>
-          <input type="text" id="textb_Apellidos" name="text_Apellidos" placeholder="Apellidos" required>
-          <br> <br>
-          <label>Correo </label>
-          <input type="text" id="textb_Correo" name="textb_Correo" required>
-          <br> <br>
-          <label>Contra </label>
-          <input type="text" id="textb_Contrasena" name="textb_Contrasena" required>
-          <br> <br>
-          <label>Fecha de nacimiento </label>
-          <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento" required>
-          <br> <br> <br>
-          <input type="submit" id="boton_registrar" value="Registrar"></input>
+                <label>Nombre </label>
+                <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre" required>
+                <label>Apellidos </label>
+                <input type="text" id="textb_Apellidos" name="text_Apellidos" placeholder="Apellidos" required>
+                <br> <br>
+                <label>Correo </label>
+                <input type="text" id="textb_Correo" name="textb_Correo" required>
+                <br> <br>
+                <label>Contra </label>
+                <input type="text" id="textb_Contrasena" name="textb_Contrasena" required>
+                <br> <br>
+                <label>Fecha de nacimiento </label>
+                <input type="text" id="textb_Fech_nacimiento" name="textb_Fech_nacimiento" required>
+                <br> <br> <br>
+                <input type="submit" id="boton_registrar" value="Registrar"></input>
           </form>
 
           
