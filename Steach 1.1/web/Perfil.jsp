@@ -12,11 +12,11 @@
 <style>  
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
-  body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
+  body{font-family:Helvetica, Arial, sans-serif; font-size:14px;background-color: #cccccc;}
   
   /* barra superior */
   #barra_superior{
-    padding:5px 20px;
+    padding:5px;
     background:#080808;
     font-size:12px;
     color:#FFF;
@@ -83,7 +83,7 @@
     /*max-height: 200px;*/
     /*Margen*/
     /*padding:5px 20px;*/ 
-    background:#EFF;
+    background:#FFF;
     margin:auto;
     border-radius:10px;
     border-color: #cccccc;
@@ -92,22 +92,29 @@
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     float:top;
-    overflow: auto;
+    overflow: hidden;
   }
   #calificacion b{
-      display: table;
+    display: table;
   }
-    #foto-perfil{
+  #calificacio h2{
+    margin-left: 200px;
+    padding: 50px;
+  }
+  
+ 
+  
+  #foto-perfil{
     /*Ancho*/
-    width:100px;
-    height: 100px;
+    width:150px;
+    height: 150px;
     /*Margen*/
     /*padding:5px;*/ 
-    background:#EFF;
-    margin:auto;
-    border-radius:10px;
+    background:#FFF;
+    margin:0;
+    padding: 0;
+    border-radius:300px;
     border-color: #cccccc;
-    border-style: ridge;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
@@ -120,7 +127,7 @@
     height:200px;
     /*Margen*/
     /*padding:5px;*/ 
-    background: #66ccff;
+    background: #FFF;
     margin:auto;
     border-radius:10px;
     border-color: #cccccc;
@@ -157,15 +164,10 @@
  
   <div id="calificacion">
       <center>
-          <h2 align="left">Julian Carvajal Montoya</h2>
             <div id="foto-perfil">
-                <h1>Foto</h1>  
+                <h1>Foto</h1> 
             </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+         <h2 align="left">Nombre</h2>
             <h1>Calificame</h1>
             <form>
                 <b> ¿Mis explicaciones son claras?
