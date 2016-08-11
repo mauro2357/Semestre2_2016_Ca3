@@ -13,6 +13,15 @@ public class Usuario {
     String usu_contra;
     //Constructor
 
+    public Usuario(String usu_nombre, String usu_apellidos, String usu_fecha_nacimiento, String usu_correo, String usu_contra) {
+        this.usu_nombre = usu_nombre;
+        this.usu_apellidos = usu_apellidos;
+        this.usu_fecha_nacimiento = usu_fecha_nacimiento;
+        this.usu_correo = usu_correo;
+        this.usu_contra = usu_contra;
+    }
+
+    
     public Usuario() {
         usu_nombre = "";
         usu_apellidos = "";

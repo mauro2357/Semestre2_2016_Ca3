@@ -30,6 +30,7 @@ public class ServletRegistrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UsuarioDAO uda = new UsuarioDAO();
         
         String nombre = request.getParameter("textb_Nombre");
         String apellidos = request.getParameter("text_Apellidos");
@@ -48,6 +49,7 @@ public class ServletRegistrar extends HttpServlet {
         
         //request.getRequestDispatcher("Perfil.jsp").forward(request, response);
         request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
+        
         
         
         
