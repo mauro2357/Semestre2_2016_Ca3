@@ -74,7 +74,6 @@ body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
     float:right;
     text-decoration: none#000000;
 }
-////////////////////////////////////////REgistro
   /* reset del body y el html*/
   body,html{margin:0; padding:0;}
   body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
@@ -178,8 +177,7 @@ body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
   #boton_ingresar{
       margin-right: 30px;
   }
-////// Registro
-/////////////////////////////PERFIL
+
  /* reset del body y el html*/
   body,html{margin:0; padding:0;}
   body{font-family:Helvetica, Arial, sans-serif; font-size:14px;background-color: #cccccc;}
@@ -308,8 +306,4 @@ body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
     float:left; 
   }
 
-  
  
-
-
-/////////////////////////////PERFIL

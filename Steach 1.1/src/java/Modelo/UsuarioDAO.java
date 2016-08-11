@@ -22,6 +22,7 @@ public class UsuarioDAO {
     
     public Usuario verificarUsuario(String usu_correo){
         Usuario usu= new Usuario();
+        usu.setUsu_nombre("");
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
             ResultSet rs = estatuto2.executeQuery("select * from db_steach.usuario where usu_correo='"+usu_correo+"';");

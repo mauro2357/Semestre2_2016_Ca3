@@ -10,9 +10,8 @@
 <head>
 <title>Inicio Steach</title>
     <div class="info-usuario">
-    <ul class="navegacion">
-
-      </from>
+        <ul class="navegacion">
+    </from>
     </ul>
     </div>
 <link href="CSS/Style.css" type="text/css" rel="stylesheet" >

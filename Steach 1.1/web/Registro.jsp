@@ -7,13 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>Steach</title>
-  
-<link href="CSS/Style.css" type="text/css" rel="stylesheet" >
-
-</head>
-
+    <head>
+        <title>Steach</title>
+        <link href="CSS/Style.css" type="text/css" rel="stylesheet" >
+    </head>
 <body>
   <div id="barra_superior">
     <ul class="navegacion">
@@ -54,7 +51,6 @@
      </h1>
       <h3>
           <br>
-          
           <label>Nombre </label>
           <input type="text" id="textb_Nombre" name="textb_Nombre" placeholder="Nombre">
           <label>Apellidos </label>
