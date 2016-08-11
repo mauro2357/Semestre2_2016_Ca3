@@ -5,7 +5,8 @@
  */
 package Controlador;
 
-import Modelo.*;
+import Modelo.Usuario;
+import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class ServletIniciarSesion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String correo = request.getParameter("textb_correoint");
         String contrasena = request.getParameter("textb_contraint");
         
@@ -48,7 +49,7 @@ public class ServletIniciarSesion extends HttpServlet {
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
         }
         
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -91,3 +92,4 @@ public class ServletIniciarSesion extends HttpServlet {
     }// </editor-fold>
 
 }
+
