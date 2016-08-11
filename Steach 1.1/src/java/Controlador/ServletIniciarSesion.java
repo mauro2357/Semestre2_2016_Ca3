@@ -45,8 +45,13 @@ public class ServletIniciarSesion extends HttpServlet {
 
         }
         else{
-            request.getSession().setAttribute("Usuario", usu);
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+            if(usu.getUsu_contra().equals(contrasena)){
+                request.getSession().setAttribute("Usuario", usu);
+                request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+            }
+            else{
+                request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+            }
         }
         
         
