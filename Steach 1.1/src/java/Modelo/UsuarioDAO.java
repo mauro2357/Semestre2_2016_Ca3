@@ -43,7 +43,7 @@ public class UsuarioDAO {
             conex.desconectar();
         } 
         catch (Exception e) {
-            
+            System.out.println("error al verificar en base de datos");
         }
         return usu;
     }
