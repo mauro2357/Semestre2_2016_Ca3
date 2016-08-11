@@ -7,7 +7,7 @@
 <%@page import="Modelo.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Usuario usu= (Usuario)request.getSession().getAttribute("usu");
+    Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
 %>
 <!DOCTYPE html>
 <html>

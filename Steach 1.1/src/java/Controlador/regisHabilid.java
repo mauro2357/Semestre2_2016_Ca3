@@ -46,7 +46,7 @@ public class regisHabilid extends HttpServlet {
             Habilidad hab = new Habilidad(usu_correo, hab_fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
             HabilidadDAO habDAO = new HabilidadDAO();
             habDAO.registrarHabilidades(hab);
-            request.getSession().setAttribute("usu",usu);
+            request.getSession().setAttribute("Usuario",usu);
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
         
     }
