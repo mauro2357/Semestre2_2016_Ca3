@@ -4,7 +4,11 @@
     Author     : Andres
 --%>
 
+<%@page import="Modelo.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Usuario usu= (Usuario)request.getSession().getAttribute("usu");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,60 +36,10 @@
   </div>
  
   <div id="calificacion">
-      <center>
-            <div id="foto-perfil">
-                <h1>Foto</h1> 
-            </div>
-         <h2 align="left">Nombre</h2>
-            <h1>Calificame</h1>
-            <form>
-                <b> ¿Mis explicaciones son claras?
-                <select>
-                    <optgroup label="calificame">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </optgroup>
-                </select>
-            </b>
-            <b> ¿Mis Aportes son valiosos?
-                <select>
-                    <optgroup label="calificame">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </optgroup>
-                </select>
-            </b>
-            <b> ¿Mis conocimientos son acordes alas habilidades que ofresco?
-                <select>
-                    <optgroup label="calificame">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </optgroup>
-                </select>
-            </b>
-            <b> ¿Mis Respuestas son rapidas?
-                <select>
-                    <optgroup label="calificame">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </optgroup>
-                </select>
-            </b> 
-                </form>
-      </center>
-    
+    <div id="foto-perfil">
+        <h1>Foto</h1> 
+    </div>
+     <h2 align="left"><%=usu.getUsu_nombre()%><%=usu.getUsu_apellidos()%></h2>
   </div>
   <div id="habilidades">
     <h4>Habilidaes que me gusta enseñar</h4>

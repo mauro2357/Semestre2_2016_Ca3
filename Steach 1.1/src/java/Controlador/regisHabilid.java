@@ -5,8 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Habilidad;
-import Modelo.HabilidadDAO;
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -40,12 +39,14 @@ public class regisHabilid extends HttpServlet {
             String hab_Espanol = request.getParameter("txtb_Espanol");
             
             String usu_correo=request.getParameter("lbl_correo");
+            Usuario usu = new Usuario();
+            UsuarioDAO usudao= new UsuarioDAO();
+            usu = usudao.verificarUsuario(usu_correo);
             System.out.println(usu_correo);
             Habilidad hab = new Habilidad(usu_correo, hab_fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
             HabilidadDAO habDAO = new HabilidadDAO();
             habDAO.registrarHabilidades(hab);
-            
-           
+            request.getSession().setAttribute("usu",usu);
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
         
     }

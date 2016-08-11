@@ -248,6 +248,8 @@ body{font-family:Helvetica, Arial, sans-serif; font-size:14px;}
   #calificacion{
     /*Ancho*/
     min-width:200px;
+/*    padding-left: 100px;
+    padding-right: 100px;*/
     /*max-height: 200px;*/
     /*Margen*/
     /*padding:5px 20px;*/ 
