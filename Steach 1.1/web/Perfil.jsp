@@ -13,7 +13,7 @@
 <html>
 <head>
 <title>Perfil</title>
-<link href="CSS/Style.css" type="text/css" rel="stylesheet" >
+<link href="CSS/PerfilStyle.css" type="text/css" rel="stylesheet" >
 </head>
 
 <body>
@@ -39,7 +39,7 @@
     <div id="foto-perfil">
         <h1>Foto</h1> 
     </div>
-     <h2 align="left"><%=usu.getUsu_nombre()%><%=usu.getUsu_apellidos()%></h2>
+     <h2 align="left"><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h2>
   </div>
   <div id="habilidades">
     <h4>Habilidaes que me gusta enseñar</h4>

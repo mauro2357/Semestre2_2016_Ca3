@@ -14,7 +14,7 @@
     </from>
     </ul>
     </div>
-<link href="CSS/Style.css" type="text/css" rel="stylesheet" >
+<link href="CSS/IndexStyle.css" type="text/css" rel="stylesheet" >
 
 </head>
 

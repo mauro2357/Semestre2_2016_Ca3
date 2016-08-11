@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Steach</title>
-        <link href="CSS/Style.css" type="text/css" rel="stylesheet" >
+        <link href="CSS/RegistroStyle.css" type="text/css" rel="stylesheet" >
     </head>
 <body>
   <div id="barra_superior">
