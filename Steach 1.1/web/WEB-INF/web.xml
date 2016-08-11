@@ -12,6 +12,10 @@
         <servlet-name>ServletIniciarSesion</servlet-name>
         <servlet-class>Controlador.ServletIniciarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>regisHabilid</servlet-name>
+        <servlet-class>Controlador.regisHabilid</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ServletIniciarSesion</servlet-name>
         <url-pattern>/ServletIniciarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>regisHabilid</servlet-name>
+        <url-pattern>/regisHabilid</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

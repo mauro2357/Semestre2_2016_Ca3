@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,26 +31,33 @@ public class ServletRegistrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UsuarioDAO uda = new UsuarioDAO();
         
         String nombre = request.getParameter("textb_Nombre");
         String apellidos = request.getParameter("text_Apellidos");
-        String correo = request.getParameter("text_Correo");
+        String correo = request.getParameter("textb_Correo");
         String contrasena = request.getParameter("textb_Contrasena");
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
         
         Usuario usu = new Usuario();
+        UsuarioDAO usuDAO = new UsuarioDAO();
+        
         usu.setUsu_nombre(nombre);
         usu.setUsu_apellidos(apellidos);
         usu.setUsu_correo(correo);
         usu.setUsu_contra(contrasena);
         usu.setUsu_fecha_nacimiento(fechaNacimiento);
         
-        request.getSession().setAttribute("Usuario", usu);
+        try {
+            usuDAO.registrarUsuario(usu);
+            request.getSession().setAttribute("Usuario", usu);
+            request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
+        } catch (SQLException e) {
+            String mensajeError=e.getMessage();
+            request.getSession().setAttribute("MensajeError", mensajeError);
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+        }
         
-        //request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-        request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
-        
+
         
         
         

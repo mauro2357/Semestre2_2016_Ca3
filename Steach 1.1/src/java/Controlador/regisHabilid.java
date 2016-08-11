@@ -1,8 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
 import Modelo.Habilidad;
 import Modelo.HabilidadDAO;
-import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,8 +31,7 @@ public class regisHabilid extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            String hab_fisica = request.getParameter("txtb_fisica");
+        String hab_fisica = request.getParameter("txtb_fisica");
             String hab_Quimica = request.getParameter("txtb_Quimica");
             String hab_Matematicas = request.getParameter("txtb_Matematicas");
             String hab_Programacion = request.getParameter("txtb_Programacion");
@@ -44,6 +47,7 @@ public class regisHabilid extends HttpServlet {
             
            
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
