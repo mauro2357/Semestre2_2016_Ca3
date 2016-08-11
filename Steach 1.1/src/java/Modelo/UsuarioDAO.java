@@ -28,7 +28,6 @@ public class UsuarioDAO {
             ResultSet rs = estatuto2.executeQuery("select * from db_steach.usuario where usu_correo='"+usu_correo+"';");
             usu.setUsu_correo(usu_correo);
             rs.next();
-            //JOptionPane.showMessageDialog(null, "Dentro de Comprobar cliente "+rs.next());
             String usu_nombre = rs.getString("usu_nombre");
             String usu_ape = rs.getString("usu_apellidos");
             String usu_contra = rs.getString("usu_contra");
