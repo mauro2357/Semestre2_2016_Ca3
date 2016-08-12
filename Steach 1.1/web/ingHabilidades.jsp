@@ -38,7 +38,8 @@
     </div>
     <div id="contenedor3">
         <form action="regisHabilid" method="post">
-           <input type="text" id="txtb_correo" name="lbl_correo" value=" <%=usu.getUsu_correo() %> "> <br> <br>
+            
+            <input type="text" id="txtb_correo" name="lbl_correo" value="<%=usu.getUsu_correo()%>"> <br> <br>
             Fisica: <input type="checkbox" id="txtb_fisica" name="txtb_fisica" value="0" placeholder="0"> <br> <br>
             Quimica: <input type="checkbox" id="txtb_Quimica" name="txtb_Quimica" value="0" placeholder="0">  <br> <br>
             Matematicas: <input type="checkbox" id="txtb_Matematicas" name="txtb_Matematicas" value="0" placeholder="0"> <br> <br>
