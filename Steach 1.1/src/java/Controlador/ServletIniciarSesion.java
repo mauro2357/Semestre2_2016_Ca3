@@ -37,7 +37,7 @@ public class ServletIniciarSesion extends HttpServlet {
         Usuario usu = new Usuario();
         UsuarioDAO usuDAO = new UsuarioDAO();
         usu=usuDAO.verificarUsuario(correo);
-        Habilidad hab = new Habilidad("", "", "", "", "", "", "", "");
+        Habilidad hab = new Habilidad();
         HabilidadDAO habDAO = new HabilidadDAO();
         hab=habDAO.ObtenerHabilidad(correo);
         if("".equals(usu.getUsu_nombre())){
@@ -48,7 +48,32 @@ public class ServletIniciarSesion extends HttpServlet {
             if(usu.getUsu_contra().equals(contrasena)){
                 request.getSession().setAttribute("Usuario", usu);
                 request.getSession().setAttribute("hab", hab);
+                
+                String habilidades_usu="";
+                if(hab.getHab_biologia().equals("1")){
+                    habilidades_usu=habilidades_usu + "Biologia   ";
+                }
+                if(hab.getHab_espanol().equals("1")){
+                    habilidades_usu = habilidades_usu + "Espanol   ";
+                }
+                if(hab.getHab_estadistica().equals("1")){
+                    habilidades_usu = habilidades_usu + "Estadistica   ";
+                }
+                if(hab.getHab_fisica().equals("1")){
+                    habilidades_usu = habilidades_usu + "Fisica   ";
+                }
+                if(hab.getHab_matematicas().equals("1")){
+                    habilidades_usu = habilidades_usu + "Matematicas   ";
+                }
+                if(hab.getHab_programacion().equals("1")){
+                    habilidades_usu = habilidades_usu + "Programacion   ";
+                }
+                if(hab.getHab_quimica().equals("1")){
+                    habilidades_usu = habilidades_usu + "Quimica   ";
+                }
+                request.getSession().setAttribute("Habilidades_usu", habilidades_usu);
                 request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+            
             }
             else{
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);

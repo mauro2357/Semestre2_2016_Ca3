@@ -9,6 +9,15 @@
 <%
     Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
     Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
+    String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
+    String calif;
+    if(hab.getHab_calificacion().equals("-1")){
+        calif = "No ha sido calificado";
+    }
+    else{
+        calif=hab.getHab_calificacion();
+    }
+
 %>
 <!DOCTYPE html>
 <html>
@@ -38,15 +47,18 @@
     
   <div class="col-md-3">
     <div id="habilidades">
-        <h4>Habilidaes que me gusta enseñar</h4>        
-        <h4><%=hab.getUsu_correo()%></h4>
-        <h4><%if(hab.getHab_quimica()=="1")System.out.println("quimica");%></h4>
-        <h4><%=hab.getHab_matematicas()%></h4>
-        <h4><%=hab.getHab_programacion()%></h4>
-        <h4><%=hab.getHab_biologia()%></h4>
-        <h4><%=hab.getHab_estadistica()%></h4>
-        <h4><%=hab.getHab_fisica()%></h4>
-        <h4><%=hab.getHab_espanol()%></h4>
+        <h3>Habilidaes que me gusta enseñar</h3>
+            <br>
+            <h4>
+                <%=habilidades_usu %>
+            </h4>
+        <br>
+        <h3>Calificación</h3>
+        <br>
+            <h4>
+                <%=calif %>
+            </h4>
+        <br>
     </div>  
   </div>
   <div class="col-md-6">

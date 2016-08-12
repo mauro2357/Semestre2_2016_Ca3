@@ -24,7 +24,7 @@ public class HabilidadDAO {
     }
     
     public Habilidad ObtenerHabilidad(String usu_correo){
-        Habilidad hab= new Habilidad(usu_correo, "", "", "", "", "", "", "");
+        Habilidad hab= new Habilidad();
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
             ResultSet rs = estatuto2.executeQuery("select * from db_steach.habilidades where usu_correo='"+usu_correo+"';");
@@ -32,11 +32,12 @@ public class HabilidadDAO {
             rs.next();
             String hab_matematica = rs.getString("hab_matematica");
             String hab_fisica= rs.getString("hab_fisica");
-            String hab_quimica = rs.getString("hab_hab_quimica");
+            String hab_quimica = rs.getString("hab_quimica");
             String hab_programacion = rs.getString("hab_programacion");
             String hab_biologia = rs.getString("hab_biologia");
             String hab_estadistica = rs.getString("hab_estadistica");
             String hab_español = rs.getString("hab_español");
+            String hab_calificacion = rs.getString("hab_calificacion");
 
             hab.setHab_biologia(hab_biologia);
             hab.setHab_espanol(hab_español);
@@ -45,6 +46,7 @@ public class HabilidadDAO {
             hab.setHab_matematicas(hab_matematica);
             hab.setHab_programacion(hab_programacion);
             hab.setHab_quimica(hab_quimica);
+            hab.setHab_calificacion(hab_calificacion);
             estatuto2.close();
             conex.desconectar();
         } 

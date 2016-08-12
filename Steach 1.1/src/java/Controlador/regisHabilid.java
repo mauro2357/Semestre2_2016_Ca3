@@ -73,9 +73,35 @@ public class regisHabilid extends HttpServlet {
             Habilidad hab = new Habilidad(usu_correo, hab_Fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
             HabilidadDAO habDAO = new HabilidadDAO();
             habDAO.registrarHabilidades(hab);
-//            hab=habDAO.ObtenerHabilidad(usu.getUsu_correo());
+            
+            String habilidades_usu="";
+            if(hab.getHab_biologia().equals("1")){
+                habilidades_usu=habilidades_usu + "Biologia   ";
+            }
+            if(hab.getHab_espanol().equals("1")){
+                habilidades_usu = habilidades_usu + "Espanol   ";
+            }
+            if(hab.getHab_estadistica().equals("1")){
+                habilidades_usu = habilidades_usu + "Estadistica   ";
+            }
+            if(hab.getHab_fisica().equals("1")){
+                habilidades_usu = habilidades_usu + "Fisica   ";
+            }
+            if(hab.getHab_matematicas().equals("1")){
+                habilidades_usu = habilidades_usu + "Matematicas   ";
+            }
+            if(hab.getHab_programacion().equals("1")){
+                habilidades_usu = habilidades_usu + "Programacion   ";
+            }
+            if(hab.getHab_quimica().equals("1")){
+                habilidades_usu = habilidades_usu + "Quimica   ";
+            }
+            
+            
+            
             request.getSession().setAttribute("Usuario",usu);
             request.getSession().setAttribute("hab", hab);
+            request.getSession().setAttribute("Habilidades_usu", habilidades_usu);
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
             
         

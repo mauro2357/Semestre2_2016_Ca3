@@ -18,6 +18,19 @@ public class Habilidad {
     String hab_estadistica;
     String hab_programacion;
     String hab_espanol;
+    String hab_calificacion;
+    
+    public Habilidad(){
+    usu_correo="";
+    hab_fisica="0";
+    hab_quimica="0";
+    hab_matematicas="0";
+    hab_biologia="0";
+    hab_estadistica="0";
+    hab_programacion="0";
+    hab_espanol="0";
+    hab_calificacion="-1";
+    }
 
     public Habilidad(String usu_correo, String hab_fisica, String hab_quimica, String hab_matematicas, String hab_biologia, String hab_estadistica, String hab_programacion, String hab_espanol) {
         this.usu_correo = usu_correo;
@@ -28,7 +41,18 @@ public class Habilidad {
         this.hab_estadistica = hab_estadistica;
         this.hab_programacion = hab_programacion;
         this.hab_espanol = hab_espanol;
+        this.hab_calificacion="-1";
     }
+
+    public String getHab_calificacion() {
+        return hab_calificacion;
+    }
+
+    public void setHab_calificacion(String hab_calificacion) {
+        this.hab_calificacion = hab_calificacion;
+    }
+    
+    
 
     public String getUsu_correo() {
         return usu_correo;
