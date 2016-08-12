@@ -12,37 +12,24 @@
         <link href="CSS/RegistroStyle.css" type="text/css" rel="stylesheet" >
     </head>
 <body>
-  <div id="barra_superior">
-    <ul class="navegacion">
-      <li><a href="Index.jsp">Inicio</a></li>
-      <li><a href="#">Acerca de nosotros</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="ServletIniciarSesion">Contacto</a></li>
-    </ul>
-    <div class="info-usuario">
-    <ul class="navegacion">
-      <form action="" method="post">
-      <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo"></li>
-      <li><input type="password" id="textb_contraint" name="textb_contraint" placeholder="Contra"></li>
-      <li><input type="submit" id="boton_ingresar" name="btn_ingresar" value="Ingresar" onclick=this.form.action="ServletIniciarSesion" ></a>
-      </input>
-      
-    </ul>
-    </div>
-  </div>
-  <div id="contenedor">
-    <h1>Steach</h1>
-           
-<p><strong>Steach, una aplicacion para el aprendizaje</strong> desarrollada por Ca3 equipada con los servicios necesarios para que puedas contactar a personas que te ensenen lo que necesitas. </p>
- 
-<h2>Historias de usuario</h2>
-           
-<ul>
-   <li>Quiero registrarme.</li>
-   <li>dentro del segungo li.</li>
-</ul>
- 
-<blockquote><p>Mirar historias</p></blockquote>
+    <div id="barra_superior">
+        <ul class="navegacion">
+            <li><a href="Index.jsp">Inicio</a></li>
+            <li><a href="#">Acerca de nosotros</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="ServletIniciarSesion">Contacto</a></li>
+        </ul>
+        <div class="info-usuario">
+            <ul class="navegacion">
+                <form action="" method="post">
+                    <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo"></li>
+                    <li><input type="password" id="textb_contraint" name="textb_contraint" placeholder="Contra"></li>
+                    <li><input type="submit" id="boton_ingresar" name="btn_ingresar" value="Ingresar" onclick=this.form.action="ServletIniciarSesion" ></a>
+                        </input>
+
+                        </ul>
+                        </div>
+                        </div>
  
   </div>
   <div id="contenedorRegistro">

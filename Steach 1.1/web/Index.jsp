@@ -25,11 +25,6 @@
       <li><a href="QuinesSomos.jsp">Quienes Somos</a></li> 
       <li><a href="PulicacionesPopulares.jsp">Publicaciones Populares</a></li> 
       <li><a href="ProfesoresMejorCalificados.jsp">Profesores Mejor Calificados</a></li>
-        <form  action="ServletIniciarSesion" method="post">
-            <li><input type="text" id="textb_correoint" name="textb_correoint" placeholder="Correo" required></li>
-            <li><input type="text" id="textb_contraint" name="textb_contraint" placeholder="Contra" required></li>
-            <li><input type="submit" id="boton_ingresar" value="Ingresar">  </input></li> 
-        <form/>
     </ul>
   </div>
     <div id = "imagen"><img src="Ca3.png" width="10%" align="right"></div> 

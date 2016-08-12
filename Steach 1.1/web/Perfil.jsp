@@ -48,17 +48,14 @@
   <div class="col-md-3">
     <div id="habilidades">
         <h3>Habilidaes que me gusta enseñar</h3>
-            <br>
             <h4>
                 <%=habilidades_usu %>
             </h4>
         <br>
         <h3>Calificación</h3>
-        <br>
             <h4>
                 <%=calif %>
             </h4>
-        <br>
     </div>  
   </div>
   <div class="col-md-6">
