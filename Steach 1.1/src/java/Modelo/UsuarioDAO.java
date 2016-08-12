@@ -52,9 +52,9 @@ public class UsuarioDAO {
         Statement estatuto = conex.getConnection().createStatement();
         try {
             
-            estatuto.executeUpdate("INSERT INTO db_steach.usuario VALUES ('"+usu.getUsu_correo()+"', '"
-                            +usu.getUsu_nombre()+"', '"+usu.getUsu_apellidos()
-                            +"', '"+usu.getUsu_contra()+"', '"+usu.getUsu_fecha_nacimiento()+"')");
+            estatuto.executeUpdate("INSERT INTO db_steach.usuario VALUES ('"+usu.getUsu_nombre()+
+                    "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
+                            +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"')");
         } catch (SQLException e) {
             throw new SQLException("El usuario registrado con "+usu.getUsu_correo()+" ya se encuentra registrado");
         }

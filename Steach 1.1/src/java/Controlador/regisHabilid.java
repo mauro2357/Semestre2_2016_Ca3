@@ -30,15 +30,14 @@ public class regisHabilid extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String hab_fisica = request.getParameter("txtb_fisica");
             String hab_Quimica = (String)request.getParameter("txtb_Quimica");
             String hab_Matematicas = (String)request.getParameter("txtb_Matematicas");
             String hab_Programacion = (String)request.getParameter("txtb_Programacion");
             String hab_Biologia = (String)request.getParameter("txtb_Biologia");
             String hab_Estadistica = (String)request.getParameter("txtb_Estadistica");
             String hab_Espanol = (String)request.getParameter("txtb_Espanol");
-            
-            String usu_correo=request.getParameter("lbl_correo");
+            String hab_Fisica = (String)request.getParameter("txtb_fisica");
+            String usu_correo = (String)request.getParameter("lbl_correo");
             Usuario usu = new Usuario();
             UsuarioDAO usudao= new UsuarioDAO();
             usu = usudao.verificarUsuario(usu_correo);
@@ -66,8 +65,12 @@ public class regisHabilid extends HttpServlet {
                 hab_Espanol="0";
             else
                 hab_Espanol="1";
+            if(hab_Fisica == null)
+                hab_Fisica="0";
+            else
+                hab_Fisica="1";
             
-            Habilidad hab = new Habilidad(usu_correo, hab_fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
+            Habilidad hab = new Habilidad(usu_correo, hab_Fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
             HabilidadDAO habDAO = new HabilidadDAO();
             habDAO.registrarHabilidades(hab);
             request.getSession().setAttribute("Usuario",usu);
