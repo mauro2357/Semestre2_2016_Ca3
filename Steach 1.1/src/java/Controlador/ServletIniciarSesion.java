@@ -5,8 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,9 +36,10 @@ public class ServletIniciarSesion extends HttpServlet {
         
         Usuario usu = new Usuario();
         UsuarioDAO usuDAO = new UsuarioDAO();
- 
         usu=usuDAO.verificarUsuario(correo);
-        
+        Habilidad hab = new Habilidad("", "", "", "", "", "", "", "");
+        HabilidadDAO habDAO = new HabilidadDAO();
+        hab=habDAO.ObtenerHabilidad(correo);
         if("".equals(usu.getUsu_nombre())){
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
 
@@ -47,6 +47,7 @@ public class ServletIniciarSesion extends HttpServlet {
         else{
             if(usu.getUsu_contra().equals(contrasena)){
                 request.getSession().setAttribute("Usuario", usu);
+                request.getSession().setAttribute("hab", hab);
                 request.getRequestDispatcher("Perfil.jsp").forward(request, response);
             }
             else{

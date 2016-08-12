@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
+    Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
 %>
 <!DOCTYPE html>
 <html>
@@ -34,14 +35,29 @@
     </ul>
     </div>
   </div>
- 
-  <div id="calificacion">
-    <div id="foto-perfil">
-        <h1>Foto</h1> 
-    </div>
-     <h2 align="left"><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h2>
+    
+  <div class="col-md-3">
+    <div id="habilidades">
+        <h4>Habilidaes que me gusta enseñar</h4>        
+        <h4><%=hab.getUsu_correo()%></h4>
+        <h4><%if(hab.getHab_quimica()=="1")System.out.println("quimica");%></h4>
+        <h4><%=hab.getHab_matematicas()%></h4>
+        <h4><%=hab.getHab_programacion()%></h4>
+        <h4><%=hab.getHab_biologia()%></h4>
+        <h4><%=hab.getHab_estadistica()%></h4>
+        <h4><%=hab.getHab_fisica()%></h4>
+        <h4><%=hab.getHab_espanol()%></h4>
+    </div>  
   </div>
-  <div id="habilidades">
-    <h4>Habilidaes que me gusta enseñar</h4>
+  <div class="col-md-6">
+      <div id="calificacion">
+      <div id="foto-perfil">
+        <h1>Foto</h1> 
+      </div>
+        <h2 align="left"><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h2>
+  </div>
+  </div>
+  <div class="col-md-3">
+      
   </div>
 </html>
