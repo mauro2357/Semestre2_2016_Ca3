@@ -12,7 +12,8 @@ public class Conexion {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conex = DriverManager.getConnection("jdbc:mysql://localhost/db_steach","root","abc123");
+            //                                                                            Casta gvn deja de cambiar la clave jajaja
+            conex = DriverManager.getConnection("jdbc:mysql://localhost/db_steach","root","root");
             
         } 
         catch (Exception e) {
