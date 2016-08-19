@@ -8,6 +8,9 @@ package Controlador;
 import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +39,13 @@ public class ServletIniciarSesion extends HttpServlet {
         
         Usuario usu = new Usuario();
         UsuarioDAO usuDAO = new UsuarioDAO();
-        usu=usuDAO.verificarUsuario(correo);
+        try {
+            usu=usuDAO.verificarUsuario(correo);
+        } catch (SQLException e) {
+            String mensajeError=e.getMessage();
+            request.getSession().setAttribute("MensajeError", mensajeError);
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+        }
         Habilidad hab = new Habilidad();
         HabilidadDAO habDAO = new HabilidadDAO();
         hab=habDAO.ObtenerHabilidad(correo);

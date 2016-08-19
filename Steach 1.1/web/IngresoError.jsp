@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String msg=(String)request.getSession().getAttribute("MnsajeError");
+    String msg=(String)request.getSession().getAttribute("MensajeError");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
   </div>
   <div id="contenedor">
     <h1>Ups!</h1>
-    <p>vuelve a la pagina principal y ingresa los datos correctamente. </p>
+    <p> <%=msg %>, vuelve a la pagina principal y ingresa los datos correctamente. </p>
     <br> <br>
     <a id="boton_inicio" href="Registro.jsp"> Volver</a>
      <br>  <br>

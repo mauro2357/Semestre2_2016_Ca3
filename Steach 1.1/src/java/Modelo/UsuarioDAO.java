@@ -20,7 +20,7 @@ public class UsuarioDAO {
         conex= new Conexion();
     }
     
-    public Usuario verificarUsuario(String usu_correo){
+    public Usuario verificarUsuario(String usu_correo) throws SQLException{
         Usuario usu= new Usuario();
         usu.setUsu_nombre("");
         try {
@@ -41,17 +41,17 @@ public class UsuarioDAO {
             estatuto2.close();
             conex.desconectar();
         } 
-        catch (Exception e) {
-            System.out.println("error al verificar en base de datos");
+        catch (SQLException e) {
+            throw new SQLException("El usuario con correo "+usu_correo+" no pudo ser encontrado en la base de datos");
         }
         return usu;
     }
     
     public void registrarUsuario(Usuario usu) throws SQLException
     {
-        Statement estatuto = conex.getConnection().createStatement();
+        Statement estatuto;
         try {
-            
+            estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO db_steach.usuario VALUES ('"+usu.getUsu_nombre()+
                     "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
                             +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"')");
@@ -61,5 +61,17 @@ public class UsuarioDAO {
         estatuto.close();
         conex.desconectar();
     }   
+    
+    public void eliminar_Usuario(String usu_correo) throws SQLException{ 
+        Statement estatuto;
+        try {
+            estatuto =conex.getConnection().createStatement();
+            estatuto.executeUpdate("DELETE FROM `db_steach`.`usuario` WHERE `usu_correo`='"+usu_correo+"'");
+        } catch (SQLException e) {
+            throw new SQLException("El usuario no pudo ser eliminado");
+        }
+        estatuto.close();
+        conex.desconectar();
+    }
     
 }
