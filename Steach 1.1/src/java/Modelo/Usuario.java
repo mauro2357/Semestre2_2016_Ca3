@@ -10,7 +10,12 @@ public class Usuario {
     String usu_apellidos;
     String usu_fecha_nacimiento;
     String usu_correo;
-    String usu_contra;
+    String usu_contra;  
+    int usu_veces_suspendido;
+    int usu_activo;
+    String usu_fecha_clave;
+    
+    
     //Constructor
 
     public Usuario(String usu_nombre, String usu_apellidos, String usu_fecha_nacimiento, String usu_correo, String usu_contra) {
@@ -28,6 +33,10 @@ public class Usuario {
         usu_fecha_nacimiento = "";
         usu_correo = "";
         usu_contra = "";
+        
+        usu_veces_suspendido = 0;
+        usu_activo = 1;
+        usu_fecha_clave = "";
     }
 
     public String getUsu_nombre() {
@@ -71,5 +80,36 @@ public class Usuario {
     }
 
     
+    
+    
+    
+    
+    
+    public int getUsu_veces_suspendido() {
+        return usu_veces_suspendido;
+    }
+
+    public void setUsu_veces_suspendido(int usu_veces_suspendido) {
+        this.usu_veces_suspendido = usu_veces_suspendido;
+    }
+
+    public int getUsu_activo() {
+        return usu_activo;
+    }
+
+    public void setUsu_activo(int usu_activo) {
+        this.usu_activo = usu_activo;
+    }
+
+    public String getUsu_fecha_clave() {
+        return usu_fecha_clave;
+    }
+
+    public void setUsu_fecha_clave(String usu_fecha_clave) {
+        this.usu_fecha_clave = usu_fecha_clave;
+    }
+
+
+
     
 }
