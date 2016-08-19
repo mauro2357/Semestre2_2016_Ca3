@@ -41,6 +41,7 @@ public class regisHabilid extends HttpServlet {
             String hab_Espanol = (String)request.getParameter("txtb_Espanol");
             String hab_Fisica = (String)request.getParameter("txtb_fisica");
             String usu_correo = (String)request.getParameter("lbl_correo");
+            
             Usuario usu = new Usuario();
             UsuarioDAO usudao= new UsuarioDAO();
             try {
@@ -50,34 +51,55 @@ public class regisHabilid extends HttpServlet {
                 request.getSession().setAttribute("MensajeError", mensajeError);
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
+            int sum_procHab=0;
             if(hab_Quimica == null)
                 hab_Quimica="0";
-            else 
+            else{
                 hab_Quimica="1";
+                sum_procHab+=1;
+            }
             if(hab_Matematicas == null) 
                 hab_Matematicas="0";
-            else
+            else{
                 hab_Matematicas="1";
+                sum_procHab+=1;
+            }
             if(hab_Programacion == null)
                 hab_Programacion="0";
-            else
+            else{
                 hab_Programacion="1";
+                sum_procHab+=1;
+            }
             if(hab_Biologia == null) 
                 hab_Biologia="0";
-            else
+            else{
                 hab_Biologia="1";
+                sum_procHab+=1;
+            }
             if(hab_Estadistica == null)
                 hab_Estadistica="0";
-            else
+            else{
                 hab_Estadistica="1";
+                sum_procHab+=1;
+            }
             if(hab_Espanol == null)
                 hab_Espanol="0";
-            else
+            else{
                 hab_Espanol="1";
+                sum_procHab+=1;
+            }
             if(hab_Fisica == null)
                 hab_Fisica="0";
-            else
+            else{
                 hab_Fisica="1";
+                sum_procHab+=1;
+            }
+            if(sum_procHab>5){
+                String mensajeError="No puedes seleccionar mas del 75% de las habilidades";
+                request.getSession().setAttribute("MensajeError", mensajeError);
+                request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+            }
+            
             
             Habilidad hab = new Habilidad(usu_correo, hab_Fisica, hab_Quimica, hab_Matematicas, hab_Biologia, hab_Estadistica, hab_Programacion, hab_Espanol);
             HabilidadDAO habDAO = new HabilidadDAO();
