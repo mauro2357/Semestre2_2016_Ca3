@@ -63,6 +63,9 @@ public class ServletIniciarSesion extends HttpServlet {
         if(0==usu.getUsu_activo()){
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
+        if(usu.ValidarMeses(usu.getUsu_correo())){   
+            request.getRequestDispatcher("CambioContrasena.jsp").forward(request, response);
+        }
         else{
             if(usu.getUsu_contra().equals(contrasena)){
                 request.getSession().setAttribute("Usuario", usu);
@@ -98,6 +101,8 @@ public class ServletIniciarSesion extends HttpServlet {
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
         }
+        
+       
         
         
     }

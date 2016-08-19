@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import static java.lang.Math.abs;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,7 +34,7 @@ public class UsuarioDAO {
             String usu_contra = rs.getString("usu_contra");
             String usu_fechNacimiento = rs.getString("usu_fechNacimiento");
             String usu_veces_suspendido = rs.getString("usu_veces_suspendido");
-            //String usu_fecha_clave = rs.getString("usu_fecha_clave");
+//            String usu_fecha_clave = rs.getString("usu_fecha_clave");
             String usu_activo = rs.getString("usu_activo");
 
             usu.setUsu_nombre(usu_nombre);
@@ -42,7 +43,7 @@ public class UsuarioDAO {
             usu.setUsu_fecha_nacimiento(usu_fechNacimiento);
             usu.setUsu_veces_suspendido( Integer.parseInt(usu_veces_suspendido) );
             usu.setUsu_activo(Integer.parseInt(usu_activo) );
-            //usu.setUsu_fecha_clave(usu_fecha_clave );
+//            usu.setUsu_fecha_clave(usu_fecha_clave );
             
             estatuto2.close();
             conex.desconectar();
@@ -79,5 +80,19 @@ public class UsuarioDAO {
         }
         estatuto.close();
         conex.desconectar();
+    }
+    
+    public int NumMeses(String Correo)
+    {
+        try {
+            Statement st = conex.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select datediff(curdate(),"
+                    + "(select usu_fecha_clave from usuario where usu_correo='"+Correo+"'))");
+            rs.next();
+            int ans = Integer.parseInt(rs.getString(1));
+            return abs(ans);
+        } catch (Exception e) {
+            return -10;
+        }
     }
 }

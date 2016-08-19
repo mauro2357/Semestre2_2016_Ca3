@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -73,6 +75,17 @@ public class HabilidadDAO {
 
         } catch (SQLException e) {
 
+        }
+    }
+    
+    public void suspenderDAO(String usu_correo){
+        try {
+            Statement estatuto3 = conex.getConnection().createStatement();
+            estatuto3.executeUpdate("UPDATE usuario SET usu_activo='0' WHERE usu_correo='"+usu_correo+"';");
+            estatuto3.close();
+            conex.desconectar();
+        } catch (SQLException ex) {
+            System.out.println("error al verificar en base de datos");
         }
     }
 }

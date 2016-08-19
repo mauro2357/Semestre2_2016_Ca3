@@ -108,8 +108,17 @@ public class Usuario {
     public void setUsu_fecha_clave(String usu_fecha_clave) {
         this.usu_fecha_clave = usu_fecha_clave;
     }
-
-
-
     
+    public boolean ValidarMeses(String Correo)
+    {
+        UsuarioDAO UsuDao = new UsuarioDAO();
+        if(UsuDao.NumMeses(Correo)>=90)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }  
+    }
 }

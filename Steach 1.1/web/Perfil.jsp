@@ -10,14 +10,7 @@
     Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
     Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
     String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
-    String calif;
-    if(hab.getHab_calificacion().equals("-1")){
-        calif = "No ha sido calificado";
-    }
-    else{
-        calif=hab.getHab_calificacion();
-    }
-
+    String calif = hab.Suspender();
 %>
 <!DOCTYPE html>
 <html>

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Modelo;
-
+import Modelo.*;
 /**
  *
  * @author Andres
@@ -119,5 +119,21 @@ public class Habilidad {
         this.hab_espanol = hab_espanol;
     }
     
-    
+    public String Suspender(){
+        String calif;
+        HabilidadDAO habDAO = new HabilidadDAO();
+        if(hab_calificacion.equals("-1")){
+            calif = "No ha sido calificado";
+            return calif;
+        }
+        if(Double.parseDouble(hab_calificacion) <= 2){
+            habDAO.suspenderDAO(usu_correo);
+            calif=hab_calificacion;
+            return calif+"\n HA SIDO SUSPENDIDO POR MALO .l. vuelvase serio y enseñe bien";
+        }
+        else{
+            calif=hab_calificacion;
+            return calif;
+        }
+    }
 }
