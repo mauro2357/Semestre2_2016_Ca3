@@ -33,7 +33,7 @@ public class UsuarioDAO {
             String usu_contra = rs.getString("usu_contra");
             String usu_fechNacimiento = rs.getString("usu_fechNacimiento");
             String usu_veces_suspendido = rs.getString("usu_veces_suspendido");
-            String usu_fecha_clave = rs.getString("usu_fecha_clave");
+            //String usu_fecha_clave = rs.getString("usu_fecha_clave");
             String usu_activo = rs.getString("usu_activo");
 
             usu.setUsu_nombre(usu_nombre);
@@ -42,7 +42,7 @@ public class UsuarioDAO {
             usu.setUsu_fecha_nacimiento(usu_fechNacimiento);
             usu.setUsu_veces_suspendido( Integer.parseInt(usu_veces_suspendido) );
             usu.setUsu_activo(Integer.parseInt(usu_activo) );
-            usu.setUsu_fecha_clave(usu_fecha_clave );
+            //usu.setUsu_fecha_clave(usu_fecha_clave );
             
             estatuto2.close();
             conex.desconectar();
