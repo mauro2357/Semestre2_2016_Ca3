@@ -72,14 +72,7 @@ public class HabilidadDAO {
             conex.desconectar();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println(("INSERT INTO habilidades (hab_matematica, hab_fisica, "
-                    + "hab_quimica, hab_programacion," +
-                "hab_biologia, hab_estadistica, hab_español," +
-                "hab_calificacion, usu_correo) VALUES ('"+hab.getHab_matematicas()+"','"+hab.getHab_fisica()+
-                        "','"+hab.getHab_quimica()+"','"+hab.getHab_programacion()+"','"+
-                    hab.getHab_biologia()+"','"+hab.getHab_estadistica()+"','"+hab.getHab_espanol()+
-                    "','-1','"+hab.getUsu_correo()+"')"));
+
         }
     }
 }

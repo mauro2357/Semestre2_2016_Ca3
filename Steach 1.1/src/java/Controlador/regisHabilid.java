@@ -43,13 +43,13 @@ public class regisHabilid extends HttpServlet {
             String usu_correo = (String)request.getParameter("lbl_correo");
             Usuario usu = new Usuario();
             UsuarioDAO usudao= new UsuarioDAO();
-        try {
-            usu = usudao.verificarUsuario(usu_correo);
-        } catch (SQLException e) {
-            String mensajeError=e.getMessage();
-            request.getSession().setAttribute("MensajeError", mensajeError);
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
+            try {
+                usu = usudao.verificarUsuario(usu_correo);
+            } catch (SQLException e) {
+                String mensajeError=e.getMessage();
+                request.getSession().setAttribute("MensajeError", mensajeError);
+                request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+            }
             if(hab_Quimica == null)
                 hab_Quimica="0";
             else 
@@ -105,7 +105,6 @@ public class regisHabilid extends HttpServlet {
             if(hab.getHab_quimica().equals("1")){
                 habilidades_usu = habilidades_usu + "Quimica   ";
             }
-            
             
             
             request.getSession().setAttribute("Usuario",usu);

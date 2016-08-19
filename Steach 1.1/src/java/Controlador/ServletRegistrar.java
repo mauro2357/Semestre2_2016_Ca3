@@ -56,25 +56,7 @@ public class ServletRegistrar extends HttpServlet {
             request.getSession().setAttribute("MensajeError", mensajeError);
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
-        
 
-        
-        
-        
-        
-        /*
-        
-        
-        if(nombre.equals("") || apellidos.equals("") || correo.equals("") || contrasena.equals("") || fechaNacimiento.equals("")){
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
-        else{
-
-
-            request.setAttribute("mensajeAprobacion", "Registrado exitosamente");
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-        }
-        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

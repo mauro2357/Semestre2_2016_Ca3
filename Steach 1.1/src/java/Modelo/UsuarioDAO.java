@@ -55,10 +55,9 @@ public class UsuarioDAO {
     
     public void registrarUsuario(Usuario usu) throws SQLException
     {
-        Statement estatuto;
+        Statement estatuto = conex.getConnection().createStatement();
         try {
-            estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO db_steach.usuario VALUES ('"+usu.getUsu_nombre()+
+            estatuto.executeUpdate("INSERT INTO `db_steach`.`usuario` (`usu_nombre`, `usu_apellidos`, `usu_correo`, `usu_contra`, `usu_fechNacimiento`) VALUES ('"+usu.getUsu_nombre()+
                     "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
                             +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"')");
         } catch (SQLException e) {
