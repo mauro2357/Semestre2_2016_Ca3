@@ -49,9 +49,15 @@ public class ServletIniciarSesion extends HttpServlet {
         Habilidad hab = new Habilidad();
         HabilidadDAO habDAO = new HabilidadDAO();
         hab=habDAO.ObtenerHabilidad(correo);
+        
+        if(usu.getUsu_veces_suspendido() >=3){
+            String mensajeError="La cuenta con el correo "+correo+" ha sido suspendida de manera permanente, por lo tanto no podra acceder a la aplicación";
+            request.getSession().setAttribute("MensajeError", mensajeError);
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+        }
+        
         if("".equals(usu.getUsu_nombre())){
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-
         }
         else{
             if(usu.getUsu_contra().equals(contrasena)){

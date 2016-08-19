@@ -24,7 +24,7 @@
   </div>
   <div id="contenedor">
     <h1>Ups!</h1>
-    <p> <%=msg %>, vuelve a la pagina principal y ingresa los datos correctamente. </p>
+    <p> <%=msg %></p>
     <br> <br>
     <a id="boton_inicio" href="Registro.jsp"> Volver</a>
      <br>  <br>

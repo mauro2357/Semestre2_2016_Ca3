@@ -32,17 +32,23 @@ public class UsuarioDAO {
             String usu_ape = rs.getString("usu_apellidos");
             String usu_contra = rs.getString("usu_contra");
             String usu_fechNacimiento = rs.getString("usu_fechNacimiento");
+            String usu_veces_suspendido = rs.getString("usu_veces_suspendido");
+            String usu_fecha_clave = rs.getString("usu_fecha_clave");
+            String usu_activo = rs.getString("usu_activo");
 
             usu.setUsu_nombre(usu_nombre);
             usu.setUsu_apellidos(usu_ape);
             usu.setUsu_contra(usu_contra);
             usu.setUsu_fecha_nacimiento(usu_fechNacimiento);
+            usu.setUsu_veces_suspendido( Integer.parseInt(usu_veces_suspendido) );
+            usu.setUsu_activo(Integer.parseInt(usu_activo) );
+            usu.setUsu_fecha_clave(usu_fecha_clave );
             
             estatuto2.close();
             conex.desconectar();
         } 
         catch (SQLException e) {
-            throw new SQLException("El usuario con correo "+usu_correo+" no pudo ser encontrado en la base de datos");
+            throw new SQLException("El usuario con correo "+usu_correo+" no pudo ser encontrado en la base de datos, vuelve a la pagina principal y ingresa los datos correctamente.");
         }
         return usu;
     }
@@ -56,7 +62,7 @@ public class UsuarioDAO {
                     "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
                             +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"')");
         } catch (SQLException e) {
-            throw new SQLException("El usuario registrado con "+usu.getUsu_correo()+" ya se encuentra registrado");
+            throw new SQLException("El usuario registrado con "+usu.getUsu_correo()+" ya se encuentra registrado, vuelve a la pagina principal y ingresa los datos correctamente.");
         }
         estatuto.close();
         conex.desconectar();
@@ -73,5 +79,6 @@ public class UsuarioDAO {
         estatuto.close();
         conex.desconectar();
     }
+    
     
 }
