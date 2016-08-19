@@ -46,6 +46,7 @@ public class ServletRegistrar extends HttpServlet {
         usu.setUsu_correo(correo);
         usu.setUsu_contra(contrasena);
         usu.setUsu_fecha_nacimiento(fechaNacimiento);
+        usu.setUsu_fecha_clave(fechaNacimiento);
         
         try {
             usuDAO.registrarUsuario(usu);

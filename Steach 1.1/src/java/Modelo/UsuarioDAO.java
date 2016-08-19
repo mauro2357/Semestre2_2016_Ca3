@@ -4,7 +4,7 @@ package Modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,10 +56,12 @@ public class UsuarioDAO {
     public void registrarUsuario(Usuario usu) throws SQLException
     {
         Statement estatuto = conex.getConnection().createStatement();
+        Date fecha = new Date();
         try {
-            estatuto.executeUpdate("INSERT INTO `db_steach`.`usuario` (`usu_nombre`, `usu_apellidos`, `usu_correo`, `usu_contra`, `usu_fechNacimiento`) VALUES ('"+usu.getUsu_nombre()+
+            estatuto.executeUpdate("INSERT INTO `db_steach`.`usuario` (`usu_nombre`, `usu_apellidos`, `usu_correo`, `usu_contra`, `usu_fechNacimiento`,`usu_activo`,`usu_veces_suspendido`) "
+                    + "VALUES ('"+usu.getUsu_nombre()+
                     "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
-                            +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"')");
+                            +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"','"+1+"','"+0+"')");
         } catch (SQLException e) {
             throw new SQLException("El usuario registrado con "+usu.getUsu_correo()+" ya se encuentra registrado, vuelve a la pagina principal y ingresa los datos correctamente.");
         }
@@ -78,6 +80,4 @@ public class UsuarioDAO {
         estatuto.close();
         conex.desconectar();
     }
-    
-    
 }
