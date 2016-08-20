@@ -37,60 +37,42 @@ public class ServletIniciarSesion extends HttpServlet {
         String correo = request.getParameter("textb_correoint");
         String contrasena = request.getParameter("textb_contraint");
         
-        Usuario usu = new Usuario();
-        UsuarioDAO usuDAO = new UsuarioDAO();
-        try {
-            usu=usuDAO.verificarUsuario(correo);
-        } catch (SQLException e) {
-            String mensajeError=e.getMessage();
-            request.getSession().setAttribute("MensajeError", mensajeError);
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
-        Habilidad hab = new Habilidad();
-        HabilidadDAO habDAO = new HabilidadDAO();
-        hab=habDAO.ObtenerHabilidad(correo);
-        
-        if(usu.getUsu_veces_suspendido() >=3){
-            String mensajeError="La cuenta con el correo "+correo+" ha sido suspendida de manera permanente, por lo tanto no podra acceder a la aplicación";
-            request.getSession().setAttribute("MensajeError", mensajeError);
+        Usuario usuario = new Usuario();
+        Perfil perfil=usuario.iniciarSesion(correo);
+        if(perfil.getMensaje()!=null){
+            request.getSession().setAttribute("MensajeError", perfil.getMensaje());
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
         
-        if("".equals(usu.getUsu_nombre())){
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
-        
-        if(0==usu.getUsu_activo()){
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
-        if(usu.ValidarMeses(usu.getUsu_correo())){   
-            request.getRequestDispatcher("CambioContrasena.jsp").forward(request, response);
+
+        if(perfil.isCambioContrasenaNecesario()){   
+            request.getRequestDispatcher("Vista_cambiarClave.jsp").forward(request, response);
         }
         else{
-            if(usu.getUsu_contra().equals(contrasena)){
-                request.getSession().setAttribute("Usuario", usu);
-                request.getSession().setAttribute("hab", hab);
+            if(perfil.getUsuario().getUsu_contra().equals(contrasena)){
+                request.getSession().setAttribute("Usuario", perfil.getUsuario());
+                request.getSession().setAttribute("hab", perfil.getHabilidad());
                 
                 String habilidades_usu="";
-                if(hab.getHab_biologia().equals("1")){
+                if(perfil.getHabilidad().getHab_biologia().equals("1")){
                     habilidades_usu=habilidades_usu + "Biologia   ";
                 }
-                if(hab.getHab_espanol().equals("1")){
+                if(perfil.getHabilidad().getHab_espanol().equals("1")){
                     habilidades_usu = habilidades_usu + "Espanol   ";
                 }
-                if(hab.getHab_estadistica().equals("1")){
+                if(perfil.getHabilidad().getHab_estadistica().equals("1")){
                     habilidades_usu = habilidades_usu + "Estadistica   ";
                 }
-                if(hab.getHab_fisica().equals("1")){
+                if(perfil.getHabilidad().getHab_fisica().equals("1")){
                     habilidades_usu = habilidades_usu + "Fisica   ";
                 }
-                if(hab.getHab_matematicas().equals("1")){
+                if(perfil.getHabilidad().getHab_matematicas().equals("1")){
                     habilidades_usu = habilidades_usu + "Matematicas   ";
                 }
-                if(hab.getHab_programacion().equals("1")){
+                if(perfil.getHabilidad().getHab_programacion().equals("1")){
                     habilidades_usu = habilidades_usu + "Programacion   ";
                 }
-                if(hab.getHab_quimica().equals("1")){
+                if(perfil.getHabilidad().getHab_quimica().equals("1")){
                     habilidades_usu = habilidades_usu + "Quimica   ";
                 }
                 request.getSession().setAttribute("Habilidades_usu", habilidades_usu);

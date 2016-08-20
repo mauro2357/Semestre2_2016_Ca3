@@ -1,6 +1,8 @@
 
 package Modelo;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Andres
@@ -120,5 +122,31 @@ public class Usuario {
         {
             return false;
         }  
+    }
+    
+    public Perfil iniciarSesion(String correo){
+        UsuarioDAO usuDAO = new UsuarioDAO();
+        Perfil perfil=new Perfil();
+        Usuario usu=new Usuario();
+        try {
+            usu=usuDAO.verificarUsuario(correo);
+            perfil.setUsuario(usu);
+        } catch (SQLException e) {
+            perfil.setMensaje(e.getMessage());
+        }
+        Habilidad hab = new Habilidad();
+        HabilidadDAO habDAO = new HabilidadDAO();
+        hab=habDAO.ObtenerHabilidad(correo);
+        perfil.setHabilidad(hab);
+        if(usu.getUsu_veces_suspendido() >=3){
+            perfil.setMensaje("La cuenta con el correo "+correo+" ha sido suspendida de manera permanente, por lo tanto no podra acceder a la aplicación");
+        }
+        if(0==usu.getUsu_activo()){
+            perfil.setMensaje("La cuenta con el correo "+correo+" ha sido suspendida temporalmente, intente ingresar más tarde");
+        }
+        if(usu.ValidarMeses(usu.getUsu_correo())){   
+            perfil.setCambioContrasenaNecesario(true);
+        }
+        return perfil;
     }
 }
