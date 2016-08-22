@@ -53,11 +53,10 @@ public class ServletRegistrar extends HttpServlet {
             request.getSession().setAttribute("Usuario", usu);
             request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
         } catch (SQLException e) {
-            String mensajeError=e.getMessage();
+            String mensajeError="Ocurrio un error al registrar las habilidades, intenta de nuevo :3";
             request.getSession().setAttribute("MensajeError", mensajeError);
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

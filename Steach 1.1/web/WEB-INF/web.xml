@@ -24,6 +24,10 @@
         <servlet-name>regisHabilid</servlet-name>
         <servlet-class>Controlador.regisHabilid</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCambiarClave</servlet-name>
+        <servlet-class>Controlador.ServletCambiarClave</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>regisHabilid</servlet-name>
         <url-pattern>/regisHabilid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCambiarClave</servlet-name>
+        <url-pattern>/ServletCambiarClave</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

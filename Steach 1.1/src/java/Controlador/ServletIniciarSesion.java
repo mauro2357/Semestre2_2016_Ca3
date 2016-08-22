@@ -42,10 +42,14 @@ public class ServletIniciarSesion extends HttpServlet {
         if(perfil.getMensaje()!=null){
             request.getSession().setAttribute("MensajeError", perfil.getMensaje());
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+            return;
         }
         
 
-        if(perfil.isCambioContrasenaNecesario()){   
+        if(perfil.isCambioContrasenaNecesario()){ 
+            request.getSession().setAttribute("Correo",correo);
+            request.getSession().setAttribute("Error", "Hola "+correo+" nos dimos cuenta que es necesario cambiar"
+                    + " clave, sigue los pasos Siguientes");
             request.getRequestDispatcher("Vista_cambiarClave.jsp").forward(request, response);
         }
         else{

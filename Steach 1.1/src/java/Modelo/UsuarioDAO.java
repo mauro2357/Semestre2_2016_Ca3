@@ -95,4 +95,32 @@ public class UsuarioDAO {
             return -10;
         }
     }
+
+    public String ObtenerClaveDAO(String Correo) {
+        try {
+            Statement st = conex.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select usu_contra from usuario where usu_correo='"+Correo+"'");
+            rs.next();
+            return (String)rs.getString(1);
+        } catch (Exception e) {
+            return "No Hay Contraseña";
+        }
+    }
+    
+    public boolean CambiarClave(String Correo,String ClaveNueva)
+    {
+        try {
+            Statement st = conex.getConnection().createStatement();
+            st.executeUpdate("UPDATE `db_steach`.`usuario` SET `usu_fecha_clave`"
+                    + "=curdate() WHERE `usu_correo`='"+Correo+"';");
+            Statement st2 = conex.getConnection().createStatement();
+            st2.executeUpdate("UPDATE `db_steach`.`usuario`"
+                    + " SET `usu_contra`='"+ClaveNueva+"' WHERE `usu_correo`='"+Correo+"';");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+        
+    }
+
 }

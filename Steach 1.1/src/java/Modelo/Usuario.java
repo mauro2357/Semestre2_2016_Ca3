@@ -28,7 +28,6 @@ public class Usuario {
         this.usu_contra = usu_contra;
     }
 
-    
     public Usuario() {
         usu_nombre = "";
         usu_apellidos = "";
@@ -80,12 +79,6 @@ public class Usuario {
     public void setUsu_contra(String usu_contra) {
         this.usu_contra = usu_contra;
     }
-
-    
-    
-    
-    
-    
     
     public int getUsu_veces_suspendido() {
         return usu_veces_suspendido;
@@ -148,5 +141,20 @@ public class Usuario {
             perfil.setCambioContrasenaNecesario(true);
         }
         return perfil;
+    }
+
+    public String ObtenerClave(String Correo)
+    {
+        UsuarioDAO Usu = new UsuarioDAO();
+        return Usu.ObtenerClaveDAO(Correo);
+    }
+
+    public Boolean CambiarClave(String Correo, String ClaveActual, String ClaveNueva1, String ClaveNueva2) {
+        String ClaveDB = this.ObtenerClave(Correo);
+        if(!ClaveActual.equals(ClaveDB) || !ClaveNueva1.equals(ClaveNueva2) ||
+                ClaveNueva1.equals(ClaveDB) || ClaveNueva2.equals(ClaveDB)) return false;
+        UsuarioDAO UsuD = new UsuarioDAO();
+        Boolean ans = UsuD.CambiarClave(Correo, ClaveNueva2);
+        return ans;
     }
 }
