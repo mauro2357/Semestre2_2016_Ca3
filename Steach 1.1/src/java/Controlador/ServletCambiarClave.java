@@ -79,13 +79,7 @@ public class ServletCambiarClave extends HttpServlet {
                     habilidades_usu = habilidades_usu + "Quimica   ";
                 }
                 request.getSession().setAttribute("Habilidades_usu", habilidades_usu);
-                request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-            
+                request.getRequestDispatcher("Perfil.jsp").forward(request, response);   
         }
-
-   
     }
-    
-
-
 }

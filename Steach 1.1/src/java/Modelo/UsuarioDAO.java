@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import static java.lang.Math.abs;
@@ -7,12 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import javax.swing.JOptionPane;
-
-/**
- *
- * @author Andres
- */
-//Esta es la clase donde estan todos los metodos de cliente, los metos deben ser llamados desde el controlador
 
 public class UsuarioDAO {
     Conexion conex;
@@ -54,20 +47,21 @@ public class UsuarioDAO {
         return usu;
     }
     
-    public void registrarUsuario(Usuario usu) throws SQLException
+    public String registrarUsuario(Usuario usu) throws SQLException
     {
         Statement estatuto = conex.getConnection().createStatement();
         Date fecha = new Date();
         try {
-            estatuto.executeUpdate("INSERT INTO `db_steach`.`usuario` (`usu_nombre`, `usu_apellidos`, `usu_correo`, `usu_contra`, `usu_fechNacimiento`,`usu_activo`,`usu_veces_suspendido`) "
+            estatuto.executeUpdate("INSERT INTO `db_steach`.`usuario` (`usu_nombre`, `usu_apellidos`, `usu_correo`, `usu_contra`, `usu_fechNacimiento`,`usu_fecha_clave`,`usu_activo`,`usu_veces_suspendido`) "
                     + "VALUES ('"+usu.getUsu_nombre()+
                     "','"+usu.getUsu_apellidos()+"','"+usu.getUsu_correo()
-                            +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"','"+1+"','"+0+"')");
+                            +"','"+usu.getUsu_contra()+"','"+usu.getUsu_fecha_nacimiento()+"',"+"curdate(),'"+1+"','"+0+"')");
         } catch (SQLException e) {
-            throw new SQLException("El usuario registrado con "+usu.getUsu_correo()+" ya se encuentra registrado, vuelve a la pagina principal y ingresa los datos correctamente.");
+            return "Ocurrio un error al registrar el usuario, intenta de nuevo :3";
         }
         estatuto.close();
         conex.desconectar();
+        return "YES";
     }   
     
     public void eliminar_Usuario(String usu_correo) throws SQLException{ 

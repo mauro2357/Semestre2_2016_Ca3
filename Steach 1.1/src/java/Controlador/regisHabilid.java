@@ -128,7 +128,6 @@ public class regisHabilid extends HttpServlet {
                 habilidades_usu = habilidades_usu + "Quimica   ";
             }
             
-            
             request.getSession().setAttribute("Usuario",usu);
             request.getSession().setAttribute("hab", hab);
             request.getSession().setAttribute("Habilidades_usu", habilidades_usu);
