@@ -39,41 +39,13 @@ public class ServletIniciarSesion extends HttpServlet {
             if(perfil.getUsuario().getUsu_contra().equals(contrasena)){
                 request.getSession().setAttribute("Usuario", perfil.getUsuario());
                 request.getSession().setAttribute("hab", perfil.getHabilidad());
-                
-                String habilidades_usu="";
-                if(perfil.getHabilidad().getHab_biologia().equals("1")){
-                    habilidades_usu=habilidades_usu + "Biologia   ";
-                }
-                if(perfil.getHabilidad().getHab_espanol().equals("1")){
-                    habilidades_usu = habilidades_usu + "Espanol   ";
-                }
-                if(perfil.getHabilidad().getHab_estadistica().equals("1")){
-                    habilidades_usu = habilidades_usu + "Estadistica   ";
-                }
-                if(perfil.getHabilidad().getHab_fisica().equals("1")){
-                    habilidades_usu = habilidades_usu + "Fisica   ";
-                }
-                if(perfil.getHabilidad().getHab_matematicas().equals("1")){
-                    habilidades_usu = habilidades_usu + "Matematicas   ";
-                }
-                if(perfil.getHabilidad().getHab_programacion().equals("1")){
-                    habilidades_usu = habilidades_usu + "Programacion   ";
-                }
-                if(perfil.getHabilidad().getHab_quimica().equals("1")){
-                    habilidades_usu = habilidades_usu + "Quimica   ";
-                }
-                request.getSession().setAttribute("Habilidades_usu", habilidades_usu);
+                request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());
                 request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-            
             }
             else{
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
         }
-        
-       
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -114,6 +86,5 @@ public class ServletIniciarSesion extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
 

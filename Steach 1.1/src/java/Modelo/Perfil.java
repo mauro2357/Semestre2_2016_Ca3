@@ -13,6 +13,7 @@ public class Perfil {
     private Usuario usuario;
     private Habilidad habilidad;
     private String mensaje;
+    private String listaHab;
     private boolean cambioContrasenaNecesario;
 
     public Usuario getUsuario() {
@@ -47,6 +48,30 @@ public class Perfil {
         this.cambioContrasenaNecesario = cambioContrasenaNecesario;
     }
     
-    
+    public String ListaHabs (){
+         String habilidades_usu="";
+         if(this.getHabilidad().getHab_biologia().equals("1")){
+                habilidades_usu=habilidades_usu + "Biologia   ";
+            }
+            if(this.getHabilidad().getHab_espanol().equals("1")){
+                habilidades_usu = habilidades_usu + "Espanol   ";
+            }
+            if(this.getHabilidad().getHab_estadistica().equals("1")){
+                habilidades_usu = habilidades_usu + "Estadistica   ";
+            }
+            if(this.getHabilidad().getHab_fisica().equals("1")){
+                habilidades_usu = habilidades_usu + "Fisica   ";
+            }
+            if(this.getHabilidad().getHab_matematicas().equals("1")){
+                habilidades_usu = habilidades_usu + "Matematicas   ";
+            }
+            if(this.getHabilidad().getHab_programacion().equals("1")){
+                habilidades_usu = habilidades_usu + "Programacion   ";
+            }
+            if(this.getHabilidad().getHab_quimica().equals("1")){
+                habilidades_usu = habilidades_usu + "Quimica   ";
+            }
+         return habilidades_usu;
+    }
     
 }
