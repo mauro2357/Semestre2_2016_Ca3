@@ -41,24 +41,16 @@ public class ServletRegistrar extends HttpServlet {
         String fechaNacimiento = request.getParameter("textb_Fech_nacimiento");
         
         Usuario usu = new Usuario();
-        UsuarioDAO usuDAO = new UsuarioDAO();
+        Perfil perfil = usu.Registro(nombre, apellidos, correo, contrasena, fechaNacimiento);
         
-        usu.setUsu_nombre(nombre);
-        usu.setUsu_apellidos(apellidos);
-        usu.setUsu_correo(correo);
-        usu.setUsu_contra(contrasena);
-        usu.setUsu_fecha_nacimiento(fechaNacimiento);
-        usu.setUsu_fecha_clave(fechaNacimiento);
-        
-        String errorIngreso = usuDAO.registrarUsuario(usu);
-        if(errorIngreso.equals("YES"))
+        if(perfil.getMensaje().equals("YES"))
         {
-            request.getSession().setAttribute("Usuario", usu);
+            request.getSession().setAttribute("Usuario", perfil.getUsuario());
             request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
         }
         else
         {
-            request.getSession().setAttribute("MensajeError", errorIngreso);
+            request.getSession().setAttribute("MensajeError", perfil.getMensaje());
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
     }

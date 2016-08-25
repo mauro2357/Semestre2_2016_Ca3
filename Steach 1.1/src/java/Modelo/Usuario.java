@@ -157,4 +157,22 @@ public class Usuario {
         Boolean ans = UsuD.CambiarClave(Correo, ClaveNueva2);
         return ans;
     }
+    
+    public Perfil Registro (String nombre,String apellidos, String correo, String contrasena, String fechaNacimiento) throws SQLException{
+        Perfil perfil = new Perfil();
+        Usuario usu = new Usuario();
+        UsuarioDAO usuDAO = new UsuarioDAO();
+        
+        usu.setUsu_nombre(nombre);
+        usu.setUsu_apellidos(apellidos);
+        usu.setUsu_correo(correo);
+        usu.setUsu_contra(contrasena);
+        usu.setUsu_fecha_nacimiento(fechaNacimiento);
+        usu.setUsu_fecha_clave(fechaNacimiento);
+        
+        perfil.setMensaje(usuDAO.registrarUsuario(usu));
+        if(perfil.getMensaje().equals("YES"))
+            perfil.setUsuario(usu);
+        return perfil;
+    }
 }
