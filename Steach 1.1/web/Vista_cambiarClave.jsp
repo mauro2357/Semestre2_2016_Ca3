@@ -11,6 +11,9 @@
 <%
     String Correo= (String)request.getSession().getAttribute("Correo");
     String Error = (String)request.getSession().getAttribute("Error");
+    if(Error==null){
+        Error="";
+    }
     
 %>
 <html>
@@ -19,21 +22,19 @@
         <link href="CSS/Vista_cambiarClaveStyle.css" type="text/css" rel="stylesheet" >
     </head>
     <body>
-        <h2><%=Error%></h2>
         <div id="barra_superior">
             <ul class="navegacion">
                 <li><a href="#">Inicio</a></li>
             </ul>
             <div class="info-usuario">
                 <ul class="navegacion">
-                    <li><a href="#">Perfil</a></li>
-                    <li><a href="#">Notificaciones</a></li>
                     <li><a href="#">Salir</a></li>
                 </ul>
             </div>
         </div>
         <div id="contenedor">
-            <h1>Steach</h1>        
+            <h1>Steach</h1>
+                <%=Error%>
                 <p><strong>Para cambiar la clave</strong> solamente debes escribir tu clave anterior y copiar dos veces la clave nueva. </p>
         </div>
         <div id="contenedorRegistro">
@@ -43,7 +44,7 @@
                     <br>
                     <label>Correo </label>
                     
-                    <input type="email" id="textb_correo" name="textb_correo" value= <%=Correo%> >
+                    <input type="email" id="textb_correo" name="textb_correo">
                     <br> <br>
                     <label>Clave actual </label>
                     <input type="password" id="textb_claveActual" name="textb_claveActual" placeholder="Clave actual">
