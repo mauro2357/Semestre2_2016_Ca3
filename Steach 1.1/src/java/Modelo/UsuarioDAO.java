@@ -14,6 +14,23 @@ public class UsuarioDAO {
         conex= new Conexion();
     }
     
+    public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException{
+        ArrayList<String> nombres = new ArrayList<>();
+        Usuario usu= new Usuario();
+        usu.setUsu_nombre("");
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            ResultSet rs = estatuto2.executeQuery("select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
+            rs.next();
+            if(rs.getString(2).equals("1"))
+                nombres.add(rs.getString(1));
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se encontro la persona");
+        }
+        return nombres;
+    }
+    
     public Usuario verificarUsuario(String usu_correo) throws SQLException{
         Usuario usu= new Usuario();
         usu.setUsu_nombre("");

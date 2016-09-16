@@ -5,6 +5,9 @@
  */
 package Modelo;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author SONY
@@ -74,4 +77,7 @@ public class Perfil {
          return habilidades_usu;
     }
     
+    public ArrayList<String> ConsultarNombres (String nombre) throws SQLException{
+        return new UsuarioDAO().ConsultarNombre(nombre);
+    }
 }
