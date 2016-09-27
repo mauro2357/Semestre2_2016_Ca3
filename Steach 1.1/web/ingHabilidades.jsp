@@ -9,7 +9,6 @@
     Usuario usu =(Usuario)request.getSession().getAttribute("Usuario");
 %>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>

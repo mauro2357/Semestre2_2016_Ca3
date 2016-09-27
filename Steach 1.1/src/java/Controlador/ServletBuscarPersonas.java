@@ -9,6 +9,7 @@ import Modelo.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -33,15 +34,31 @@ public class ServletBuscarPersonas extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nombre = (String)request.getParameter("textb_buscador");
-        Perfil P = new Perfil();
+        
+        String nombre = request.getParameter("textb_buscardor");
+        
+        Perfil perfil = new Perfil();
+        ArrayList<String> correos = new ArrayList();
         try {
-            P.ConsultarNombres(nombre);
+            correos = perfil.ConsultarNombres(nombre);
         } catch (SQLException ex) {
             Logger.getLogger(ServletBuscarPersonas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+       
+        String correo_cadena="[ ";
+        for(int i=0; i < correos.size(); i++){
+            correo_cadena=correo_cadena+ '\"'+correos.get(i)+"\"";
+            if(i+1 < correos.size()){
+                correo_cadena=correo_cadena+ ", ";
+            }
+            else{
+                correo_cadena=correo_cadena +" ]";                 
+            }
+        }
+        request.getSession().setAttribute("Correos", correo_cadena);
+        request.getRequestDispatcher("Vista_Buscador.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +73,8 @@ public class ServletBuscarPersonas extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            processRequest(request, response);
+
     }
 
     /**
@@ -70,7 +88,7 @@ public class ServletBuscarPersonas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            processRequest(request, response);
     }
 
     /**

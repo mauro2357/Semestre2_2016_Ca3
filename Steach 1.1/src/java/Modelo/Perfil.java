@@ -78,6 +78,8 @@ public class Perfil {
     }
     
     public ArrayList<String> ConsultarNombres (String nombre) throws SQLException{
-        return new UsuarioDAO().ConsultarNombre(nombre);
+        UsuarioDAO UsuDAO = new UsuarioDAO();
+        
+        return UsuDAO.ConsultarNombre(nombre);
     }
 }

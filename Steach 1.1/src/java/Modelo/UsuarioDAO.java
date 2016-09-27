@@ -12,24 +12,7 @@ public class UsuarioDAO {
     
     public UsuarioDAO(){
         conex= new Conexion();
-    }
-    
-    public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException{
-        ArrayList<String> nombres = new ArrayList<>();
-        Usuario usu= new Usuario();
-        usu.setUsu_nombre("");
-        try {
-            Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
-            rs.next();
-            if(rs.getString(2).equals("1"))
-                nombres.add(rs.getString(1));
-        } 
-        catch (SQLException e) {
-            throw new SQLException("No se encontro la persona");
-        }
-        return nombres;
-    }
+    }        
     
     public Usuario verificarUsuario(String usu_correo) throws SQLException{
         Usuario usu= new Usuario();
@@ -132,6 +115,34 @@ public class UsuarioDAO {
             return false;
         }
         
+    }
+    
+    public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException{
+        ArrayList<String> nombres = new ArrayList<>();
+        Usuario usu= new Usuario();
+        usu.setUsu_nombre("");
+        System.out.println("Nombre: "+nombre);
+       
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            //ResultSet rs = estatuto2.executeQuery("Select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
+            ResultSet rs = estatuto2.executeQuery("SELECT usu_correo FROM db_steach.usuario where usu_nombre like \""+nombre+"%\";");
+            rs.next();
+
+            while(rs.getRow() != 0){
+                
+                nombres.add(rs.getString("usu_correo"));
+
+                rs.next();
+            }  
+           
+            estatuto2.close();
+            conex.desconectar();
+            return nombres;
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se encontro la persona");
+        }        
     }
 
 }

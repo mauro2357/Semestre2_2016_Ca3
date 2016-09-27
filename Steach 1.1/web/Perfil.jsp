@@ -30,10 +30,10 @@
                     <li><a href="#">Notificaciones</a></li>
 
                       <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Dropdown</a>
+                        <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Opciones</a>
                         <div class="dropdown-content" id="myDropdown">
                           <a href="Vista_cambiarClave.jsp">Cambiar clave</a>
-                          <a href="#">Cambiar habilidades</a>
+                          <a href="Vista_Buscador.jsp">Buscar amigos</a>
                           <a href="#">Cambiar nombre</a>
                         </div>
                       </li>
@@ -71,11 +71,9 @@
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
-
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(e) {
           if (!e.target.matches('.dropbtn')) {
-
             var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var d = 0; d < dropdowns.length; d++) {
               var openDropdown = dropdowns[d];
@@ -85,7 +83,6 @@
             }
           }
         }
-    </script>
-            
+    </script>     
     </body>
 </html>
