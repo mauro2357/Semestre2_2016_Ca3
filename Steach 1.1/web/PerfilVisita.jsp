@@ -8,6 +8,7 @@
 <%@page import="Modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    String error = (String)request.getSession().getAttribute("MensajeError");
     Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
     Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
     String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
@@ -20,12 +21,12 @@
         <title>Perfil de <%=usu.getUsu_nombre()%></title>
     </head>
     <body>
+        <input type="text" id="txtError" value=<%=error%>  hidden="hidden"/>
         <form action="ServletCalificar" method="post">
-           h
             <h1><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h1>
             <h3>Habilidades que domina: <%=habilidades_usu%></h3>
             <input type="text" hidden="hidden" name="txtCorreo" value=<%=usu.getUsu_correo()%> />
-            <select name="txtCalificacion" disabled="disabled" title="Selecciona la nota que se merecem <%=usu.getUsu_nombre()%>">
+            <select onchange="alerta()" name="txtCalificacion" disabled="disabled" title="Selecciona la nota que se merecem <%=usu.getUsu_nombre()%>">
             <option>Aún No</option>
             <option>1</option>
             <option>2</option>
@@ -36,8 +37,11 @@
             <br>
             <br>
         </form>
-        <form action="ServletPerfilVisita" method="post">
+        <form action="ServletSeguir" method="post">
+            <input type="text" hidden="hidden" name="txtCorreo" value=<%=usu.getUsu_correo()%> />
+            <input type="text" hidden="hidden" name="txtCorreoPrincipal" value=<%=Amigo%> />
             <input type="submit" id="btnSeguir" value="Seguir" name="btnSeguir" onclick="btn()" />
+            <script>alerta()</script>
         </form>
         
         <script>
@@ -52,8 +56,16 @@
                 else
                 {
                     hola.value = "Seguir";
+                }   
+            }
+        </script>
+        <script>
+            function alerta()
+            {
+                if(document.getElementById("txtError") !== null)
+                {
+                    alert(document.getElementById("txtError"));
                 }
-                
             }
         </script>
     </body>
