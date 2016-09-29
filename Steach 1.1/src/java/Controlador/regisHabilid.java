@@ -33,6 +33,7 @@ public class regisHabilid extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
             String hab_Quimica = (String)request.getParameter("txtb_Quimica");
             String hab_Matematicas = (String)request.getParameter("txtb_Matematicas");
             String hab_Programacion = (String)request.getParameter("txtb_Programacion");

@@ -13,8 +13,11 @@ import java.util.ArrayList;
  * @author SONY
  */
 public class Perfil {
+    
     private Usuario usuario;
     private Habilidad habilidad;
+    private Usuario amigo;
+    private Habilidad habilidad_Amigo;
     private String mensaje;
     private String listaHab;
     private boolean cambioContrasenaNecesario;
@@ -79,7 +82,6 @@ public class Perfil {
     
     public ArrayList<String> ConsultarNombres (String nombre) throws SQLException{
         UsuarioDAO UsuDAO = new UsuarioDAO();
-        
         return UsuDAO.ConsultarNombre(nombre);
     }
 }
