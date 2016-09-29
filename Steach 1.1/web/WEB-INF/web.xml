@@ -20,6 +20,10 @@
         <servlet-name>ServletCambiarClave</servlet-name>
         <servlet-class>Controlador.ServletCambiarClave</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPerfilTercero</servlet-name>
+        <servlet-class>Controlador.ServletPerfilTercero</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ServletCambiarClave</servlet-name>
         <url-pattern>/ServletCambiarClave</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPerfilTercero</servlet-name>
+        <url-pattern>/ServletPerfilTercero</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

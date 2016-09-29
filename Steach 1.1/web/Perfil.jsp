@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Index
-    Created on : 3/08/2016, 10:48:15 AM
-    Author     : Andres
---%>
-
 <%@page import="Modelo.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -28,16 +22,14 @@
                 <ul class="navegacion">
                     <li><a href="#">Perfil</a></li>
                     <li><a href="#">Notificaciones</a></li>
-
-                      <li class="dropdown">
+                    <li class="dropdown">
                         <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Opciones</a>
                         <div class="dropdown-content" id="myDropdown">
                           <a href="Vista_cambiarClave.jsp">Cambiar clave</a>
                           <a href="Vista_Buscador.jsp">Buscar amigos</a>
                           <a href="#">Cambiar nombre</a>
                         </div>
-                      </li>
-                    <li></li>
+                    </li>                    
                     <li><a href="#">Salir</a></li>
                 </ul>
             </div>
@@ -47,24 +39,25 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-6">
-            <div id="calificacion">
-                <div id="foto-perfil">
-                    <h1>Foto</h1> 
-                </div>
-                <h2 align="left"><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h2>
+        <div id="calificacion">
+            <div id="foto-perfil">
+                <br><br><br>
+                <h2>Foto</h2> 
             </div>
+            <h2 align="left"><%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%></h2>
         </div>
-        <div class="col-md-3">
-            <div id="habilidades">
-                <h3>Habilidaes que me gusta enseñar</h3>
-                <h4> <%=habilidades_usu %> </h4>
-                <br>
-                <h3>Calificación</h3>
-                <h4> <%=calif %> </h4>
-            </div>  
-        </div>
-        <div class="col-md-3">
+        <div id="habilidades">
+            <h3>Habilidaes que me gusta enseñar</h3>
+            <h4> <%=habilidades_usu %> </h4>
+            <br>
+            <h3>Calificación</h3>
+            <h4> <%=calif %> </h4>
+        </div>  
+        
+        <div id="div_publicacion">
+            Publica
+            <input type="text" id="Text_publicacion">
+            <input type="button" id="btn_publicar" value="Publica">
         </div>
     
     <script>
