@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
@@ -143,6 +145,28 @@ public class UsuarioDAO {
         catch (SQLException e) {
             throw new SQLException("No se encontro la persona");
         }        
+    }
+
+    public boolean Calificar(String Correo, int Nota){
+        try {
+            Statement st = conex.getConnection().createStatement();
+            st.executeUpdate("UPDATE `db_steach`.`habilidades`"
+                    + " SET `hab_calificacion`='"+Nota+"' WHERE `usu_correo`='"+Correo+"';");
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean HacerAmigos(String CorreoPrincipal, String Correo) {
+        try {
+            Statement st = conex.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO `db_steach`.`amigos` (`amigo_id`, `usu_correo`) "
+                    + "VALUES ('"+CorreoPrincipal+"', '"+Correo+"');");
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
     }
 
 }
