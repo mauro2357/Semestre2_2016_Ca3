@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -26,6 +27,44 @@ public class ServletPerfilTercero extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        Perfil perfil = new Perfil();
+        
+        String correotercero=request.getParameter("correotercero");
+        perfil=( perfil.iniciarPerfilTercero(correotercero) );
+        perfil.setUsuario( (Usuario) request.getSession().getAttribute("Usuario") );
+        perfil.iniciarPerfilTercero(correotercero);
+        PerfilDAO perfilDAO = new PerfilDAO();
+        
+        /*
+        request.getSession().setAttribute("Usuario", perfil.getAmigo());
+        request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+        request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+        request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+        */
+        /*
+        boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), correotercero);
+        if(!SonAmigos) request.getSession().setAttribute("MensajeError", perfil.getUsuario().getUsu_nombre());
+        else request.getSession().setAttribute("MensajeError", "Si Dio");
+        request.getSession().setAttribute("Amigo", correotercero);
+        */
+        
+        
+        
+        
+        //
+        /*
+        String error = (String)request.getSession().getAttribute("MensajeError");
+        Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
+        Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
+        String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
+        String Amigo = (String)request.getSession().getAttribute("Amigo");
+        */
+        request.getSession().setAttribute("MensajeError", "nulll");
+        request.getSession().setAttribute("Usuario", perfil.getAmigo());
+        request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+        request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+        request.getSession().setAttribute("Amigo", perfil.getAmigo().getUsu_correo());
+        request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
         
     }
 

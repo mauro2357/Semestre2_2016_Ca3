@@ -31,7 +31,7 @@
         for(var i=0; i<cor.length; i++){
                 document.write(
                 "<div id=\"contenedorRegistro\">"+
-                    cor[i] 
+                    '<a href="ServletPerfilTercero?correotercero='+cor[i]+'">'+cor[i]+'</a>'
                     +"<br>"+
                 "</div>");
         }	

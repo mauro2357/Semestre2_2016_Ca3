@@ -12,7 +12,7 @@
     Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
     Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
     String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
-    String Amigo = "andrea@andrea.com";//(String)request.getSession().getAttribute("Amigo");
+    String Amigo = (String)request.getSession().getAttribute("Amigo");
 %>
 <!DOCTYPE html>
 <html>
