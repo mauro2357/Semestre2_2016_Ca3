@@ -161,8 +161,7 @@ public class UsuarioDAO {
     public boolean HacerAmigos(String CorreoPrincipal, String Correo) {
         try {
             Statement st = conex.getConnection().createStatement();
-            st.executeUpdate("INSERT INTO `db_steach`.`amigos` (`amigo_id`, `usu_correo`) "
-                    + "VALUES ('"+CorreoPrincipal+"', '"+Correo+"');");
+            st.executeUpdate("INSERT INTO `db_steach`.`amigos` (`amigo_correo`, `usu_correo`) VALUES ('"+Correo+"', '"+CorreoPrincipal+"');");
             return true;
         } catch (SQLException ex) {
             return false;

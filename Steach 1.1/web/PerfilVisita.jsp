@@ -4,8 +4,7 @@
     Author     : SONY
 --%>
 
-<%@page import="Modelo.Habilidad"%>
-<%@page import="Modelo.Usuario"%>
+<%@page import="Modelo.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String error = (String)request.getAttribute("MensajeError");

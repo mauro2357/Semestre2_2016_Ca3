@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.UsuarioDAO;
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -73,21 +73,38 @@ public class ServletSeguir extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String CorreoPrincipal = request.getParameter("txtCorreoPrincipal");
-        String Correo = request.getParameter("txtCorreo");
+        
+        Perfil perfil = new Perfil();
+        perfil = (Perfil)request.getSession().getAttribute("Perfil");
+        PerfilDAO perfilDAO = new PerfilDAO();
         UsuarioDAO UsuDAO = new UsuarioDAO();
-        if(UsuDAO.HacerAmigos(CorreoPrincipal, Correo))
+        
+        if(request.getSession()!=null) request.getSession().invalidate();
+        
+        if(UsuDAO.HacerAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo()) )
         {
-            request.setAttribute("MensajeError", "Que bien! ya sigues a "+Correo);
-            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
-            return;
-
+            boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
+            if(SonAmigos){
+                perfil.setTipodeusuario("PerfilAmigo");
+            }
+            else{
+                perfil.setTipodeusuario("PerfilTercero");
+            }
+                
+            request.getSession().setAttribute("Perfil", perfil);
+            request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
         }
         else
         {
-            //request.getSession().setAttribute("MensajeError", "Ocurrió un error intentalo de neuvo");
+            request.getSession().setAttribute("MensajeError", "Imposible agregar a "+perfil.getAmigo().getUsu_correo()+"a tu lista de amigos");
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
 
         }
+        
+        
     }
 
     /**

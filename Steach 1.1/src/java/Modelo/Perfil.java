@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author SONY
- */
 public class Perfil {
     
     private Usuario usuario;
@@ -21,6 +12,7 @@ public class Perfil {
     private String mensaje;
     private String listaHab;
     private boolean cambioContrasenaNecesario;
+    public String tipodeusuario;
 
     public Usuario getUsuario() {
         return usuario;
@@ -77,8 +69,14 @@ public class Perfil {
     public void setListaHab(String listaHab) {
         this.listaHab = listaHab;
     }
-    
-    
+
+    public String getTipodeusuario() {
+        return tipodeusuario;
+    }
+
+    public void setTipodeusuario(String tipodeusuario) {
+        this.tipodeusuario = tipodeusuario;
+    }        
     
     public String ListaHabs (){
          String habilidades_usu="";

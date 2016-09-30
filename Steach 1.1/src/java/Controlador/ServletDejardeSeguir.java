@@ -1,6 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
-import Modelo.*;
+import Modelo.Perfil;
+import Modelo.PerfilDAO;
+import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andres
  */
-public class ServletPerfilTercero extends HttpServlet {
+public class ServletDejardeSeguir extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,17 +32,16 @@ public class ServletPerfilTercero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        Perfil perfil = new Perfil();
-        
-        String correotercero=request.getParameter("correotercero");
-        perfil=( perfil.iniciarPerfilTercero(correotercero) );
-        perfil.setUsuario( (Usuario) request.getSession().getAttribute("Usuario") );
-        perfil.iniciarPerfilTercero(correotercero);
+        Perfil perfil = (Perfil)request.getSession().getAttribute("Perfil");
         PerfilDAO perfilDAO = new PerfilDAO();
+        UsuarioDAO UsuDAO = new UsuarioDAO();
         
-        boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
+        if(request.getSession()!=null) request.getSession().invalidate();
+
+        if( perfilDAO.EliminarAmigo(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo()) )
+        {            
+            boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
             if(SonAmigos){
                 perfil.setTipodeusuario("PerfilAmigo");
             }
@@ -48,42 +54,14 @@ public class ServletPerfilTercero extends HttpServlet {
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
             request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
+        }
+        else
+        {
+            request.getSession().setAttribute("MensajeError", "Imposible eliminar a "+perfil.getAmigo().getUsu_correo()+"de tu lista de amigos");
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+
+        }
         
-        
-        
-        
-        /*
-        request.getSession().setAttribute("Usuario", perfil.getAmigo());
-        request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
-        request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
-        request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-        */
-        /*
-        boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), correotercero);
-        if(!SonAmigos) request.getSession().setAttribute("MensajeError", perfil.getUsuario().getUsu_nombre());
-        else request.getSession().setAttribute("MensajeError", "Si Dio");
-        request.getSession().setAttribute("Amigo", correotercero);
-        */
-        
-        
-        
-        
-        //
-        /*
-        String error = (String)request.getSession().getAttribute("MensajeError");
-        Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
-        Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
-        String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
-        String Amigo = (String)request.getSession().getAttribute("Amigo");
-        */
-        /*
-        request.setAttribute("MensajeError", "nulll");
-        request.getSession().setAttribute("Usuario", perfil.getAmigo());
-        request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
-        request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
-        request.getSession().setAttribute("Amigo", perfil.getAmigo().getUsu_correo());
-        request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
-        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
