@@ -147,7 +147,7 @@ public class UsuarioDAO {
         }        
     }
 
-    public boolean Calificar(String Correo, int Nota){
+    public boolean Calificar(String Correo, double Nota){
         try {
             Statement st = conex.getConnection().createStatement();
             st.executeUpdate("UPDATE `db_steach`.`habilidades`"

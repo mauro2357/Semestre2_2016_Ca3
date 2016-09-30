@@ -59,7 +59,7 @@ public class ServletPerfilTercero extends HttpServlet {
         String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
         String Amigo = (String)request.getSession().getAttribute("Amigo");
         */
-        request.getSession().setAttribute("MensajeError", "nulll");
+        request.setAttribute("MensajeError", "nulll");
         request.getSession().setAttribute("Usuario", perfil.getAmigo());
         request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
         request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
