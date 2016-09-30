@@ -78,11 +78,14 @@ public class ServletSeguir extends HttpServlet {
         UsuarioDAO UsuDAO = new UsuarioDAO();
         if(UsuDAO.HacerAmigos(CorreoPrincipal, Correo))
         {
-            request.getSession().setAttribute("MensajeError", "Que bien! ya sigues a "+Correo);
+            request.setAttribute("MensajeError", "Que bien! ya sigues a "+Correo);
+            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
+            return;
+
         }
         else
         {
-            request.getSession().setAttribute("MensajeError", "Ocurrió un error intentalo de neuvo");
+            //request.getSession().setAttribute("MensajeError", "Ocurrió un error intentalo de neuvo");
 
         }
     }

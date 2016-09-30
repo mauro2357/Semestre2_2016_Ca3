@@ -79,11 +79,14 @@ public class ServletPerfilVisita extends HttpServlet {
         UsuarioDAO UsuDAO = new UsuarioDAO();
         if(!UsuDAO.Calificar(Correo, Integer.parseInt(Calificacion)))
         {
-            request.getSession().setAttribute("MensajeError", "Ocurrió un error al calificar");
+            request.setAttribute("MensajeError", "Ocurrió un error al calificar");
+            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
+
         }
         else
         {
-            request.getSession().setAttribute("MensajeError", "Calificación hecha con exito");
+            request.setAttribute("MensajeError", "Calificación hecha con exito");
+            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response);
         }
     }
 
