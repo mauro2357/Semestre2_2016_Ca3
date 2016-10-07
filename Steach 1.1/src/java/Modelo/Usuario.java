@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Andres
  */
-public class Usuario {
+public class Usuario{
     String usu_nombre;
     String usu_apellidos;
     String usu_fecha_nacimiento;
@@ -17,7 +17,8 @@ public class Usuario {
     int usu_veces_suspendido;
     int usu_activo;
     String usu_fecha_clave;
-    ArrayList<String> publicaciones;
+    ArrayList<Publicacion> publicaciones;
+    IUsuarioDAO iUsuarioDAO;
 
     public Usuario(String usu_nombre, String usu_apellidos, String usu_fecha_nacimiento, String usu_correo, String usu_contra) {
         this.usu_nombre = usu_nombre;
@@ -39,6 +40,15 @@ public class Usuario {
         publicaciones = new ArrayList<>(); //no se si debe de llevar <String> revisar.
     }
 
+    public IUsuarioDAO getiUsuarioDAO() {
+        return iUsuarioDAO;
+    }
+
+    public void setiUsuarioDAO(IUsuarioDAO iUsuarioDAO) {
+        this.iUsuarioDAO = iUsuarioDAO;
+    }
+
+    
     public String getUsu_nombre() {
         return usu_nombre;
     }
@@ -103,11 +113,11 @@ public class Usuario {
         this.usu_fecha_clave = usu_fecha_clave;
     }
 
-    public ArrayList<String> getPublicaciones() {
+    public ArrayList<Publicacion> getPublicaciones() {
         return publicaciones;
     }
 
-    public void setPublicaciones(ArrayList<String> publicaciones) {
+    public void setPublicaciones(ArrayList<Publicacion> publicaciones) {
         this.publicaciones = publicaciones;
     }        
     
@@ -124,12 +134,35 @@ public class Usuario {
         }  
     }
     
+    public ArrayList<ArrayList<String>> convertirPublicaciones( ArrayList<Publicacion> ListaPublicaciones ){
+        ArrayList<ArrayList<String>> MatrizPublicaciones= new ArrayList<>();
+        for(int i =0; i<ListaPublicaciones.size(); i++){
+           ArrayList<String> listp = new ArrayList<>();
+           listp.add(ListaPublicaciones.get(i).getPub_amigo_correo());
+           listp.add(ListaPublicaciones.get(i).getPub_usu_correo());
+           listp.add(ListaPublicaciones.get(i).getPub_comentario());
+           MatrizPublicaciones.add(listp);
+        }
+        return MatrizPublicaciones;
+    }
+    
+    public String convertirPublicacionesAJavaScrip( ArrayList<Publicacion> ListaPublicaciones ){
+        String MatrizScrip="[";
+        for(int i =0; i<ListaPublicaciones.size(); i++){
+           
+           MatrizScrip=MatrizScrip+"[\""+ListaPublicaciones.get(i).getPub_amigo_correo()+"\", ";
+           MatrizScrip=MatrizScrip+"\""+ListaPublicaciones.get(i).getPub_usu_correo()+"\", ";
+           MatrizScrip=MatrizScrip+"\""+ListaPublicaciones.get(i).getPub_comentario()+"\"],";           
+        }
+        MatrizScrip=MatrizScrip+"]";
+        return MatrizScrip;
+    }
+    
     public Perfil iniciarSesion(String correo){
-        UsuarioDAO usuDAO = new UsuarioDAO();
         Perfil perfil=new Perfil();
         Usuario usu=new Usuario();
         try {
-            usu=usuDAO.verificarUsuario(correo);
+            usu=iUsuarioDAO.verificarUsuario(correo);
             perfil.setUsuario(usu);
         } catch (SQLException e) {
             perfil.setMensaje(e.getMessage());
@@ -137,12 +170,15 @@ public class Usuario {
         
         ArrayList<Publicacion> ListPublicaciones = new ArrayList<>();
         try {
-            ListPublicaciones=usuDAO.getPublicacionesPerfilBD(correo);
-            perfil.setUsuario(usu);
+            ListPublicaciones=iUsuarioDAO.getPublicacionesPerfilBD(correo);
+            usu.setPublicaciones(ListPublicaciones);
         } catch (SQLException e) {
             perfil.setMensaje(e.getMessage());
         }
+        perfil.setMatrizPublicaciones(convertirPublicaciones(ListPublicaciones));
         
+        perfil.setMatrizScripPublicaciones(convertirPublicacionesAJavaScrip(ListPublicaciones));
+
         Habilidad hab = new Habilidad();
         HabilidadDAO habDAO = new HabilidadDAO();
         hab=habDAO.ObtenerHabilidad(correo);

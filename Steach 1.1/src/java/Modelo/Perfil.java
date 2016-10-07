@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,6 +14,16 @@ public class Perfil {
     private String listaHab;
     private boolean cambioContrasenaNecesario;
     public String tipodeusuario;
+    public ArrayList<ArrayList<String>> MatrizPublicaciones = new ArrayList<>();
+    public String MatrizScripPublicaciones;
+
+    public String getMatrizScripPublicaciones() {
+        return MatrizScripPublicaciones;
+    }
+
+    public void setMatrizScripPublicaciones(String MatrizScripPublicaciones) {
+        this.MatrizScripPublicaciones = MatrizScripPublicaciones;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -20,6 +31,14 @@ public class Perfil {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public ArrayList<ArrayList<String>> getMatrizPublicaciones(){
+        return MatrizPublicaciones;
+    }
+
+    public void setMatrizPublicaciones(ArrayList<ArrayList<String>> MatrizPublicaciones) {
+        this.MatrizPublicaciones = MatrizPublicaciones;
     }
 
     public Habilidad getHabilidad() {

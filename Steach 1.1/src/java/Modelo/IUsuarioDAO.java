@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public interface IUsuarioDAO {
     
     public Usuario verificarUsuario(String usu_correo) throws SQLException;
+    public ArrayList<Publicacion> getPublicacionesPerfilBD(String usu_correo) throws SQLException;
     public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException;
     public ArrayList<String> ConsultarCorreo (String nombre) throws SQLException;
 

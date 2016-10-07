@@ -22,6 +22,8 @@ public class ServletIniciarSesion extends HttpServlet {
         String contrasena = request.getParameter("textb_contraint");
         
         Usuario usuario = new Usuario();
+        UsuarioDAO usuDAO= new UsuarioDAO();
+        usuario.setiUsuarioDAO(usuDAO);
         Perfil perfil=usuario.iniciarSesion(correo);
         if(perfil.getMensaje()!=null){
             request.getSession().setAttribute("MensajeError", perfil.getMensaje());
