@@ -93,6 +93,13 @@
         }
     </script>
     </form>
+
+    <script>        
+        for(var i=0; i<7; i++){
+                document.write('<div id="div_publicacion">'+'Marisol ha publicado a Andres <br> Hola esta el la puclicacion'+'</div>');
+        }	
+    </script>
+    
     <script>
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");

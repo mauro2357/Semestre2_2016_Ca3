@@ -189,7 +189,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         Usuario usu= new Usuario();
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where usu_correo = \""+usu_correo+"\";");
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = \""+usu_correo+"\";");
             
             rs.next();
             while(rs.getRow() != 0){  

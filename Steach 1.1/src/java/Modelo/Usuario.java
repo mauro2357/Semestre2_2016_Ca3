@@ -134,6 +134,15 @@ public class Usuario {
         } catch (SQLException e) {
             perfil.setMensaje(e.getMessage());
         }
+        
+        ArrayList<Publicacion> ListPublicaciones = new ArrayList<>();
+        try {
+            ListPublicaciones=usuDAO.getPublicacionesPerfilBD(correo);
+            perfil.setUsuario(usu);
+        } catch (SQLException e) {
+            perfil.setMensaje(e.getMessage());
+        }
+        
         Habilidad hab = new Habilidad();
         HabilidadDAO habDAO = new HabilidadDAO();
         hab=habDAO.ObtenerHabilidad(correo);
