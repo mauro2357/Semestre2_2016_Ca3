@@ -21,8 +21,17 @@
             <ul class="navegacion">
                 <form action="" method="post">
                 <li><input type="text" id="textb_buscador" name="textb_buscardor" placeholder="Buscar"></li>
-                <li><input type="submit" id="boton_buscar" name="btn_buscar" value="Buscar" onclick=this.form.action="ServletBuscarPersonas" ></a>
+                 <li class="dropdown">
+                    <a href="#" class="dropbtn">Que quieres Buscar?</a>
+                    <div class="dropdown-content">
+                        <input type="radio" name="BuscarRadio" value="correo"> Buscar personas por correo
+                        <input type="radio" name="BuscarRadio" value="nombre"> Buscar personas por nombre
+                        <input type="radio" name="BuscarRadio" value="habilidad"> Buscar personas por habilidad
+                    </div>
+                </li>
+                <li><input type="submit" id="boton_registrar" name="btn_buscar" value="Buscar" onclick=this.form.action="ServletBuscarPersonas" ></a>
                 </input>
+                
             </ul>
         </div>
     </div>

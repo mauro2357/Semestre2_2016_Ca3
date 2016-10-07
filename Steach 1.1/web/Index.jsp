@@ -21,7 +21,7 @@
 <body background = "Fondo2.jpg">
   <div id="barra_superior">
     <ul class="navegacion">
-      <li><a href="Registro.jsp">¿No tienes Cuenta? Regístrate</a></li>
+      <li><a href="Registro.jsp">Inicia sesión o Regístrate</a></li>
       <li><a href="QuinesSomos.jsp">Quienes Somos</a></li> 
       <li><a href="PulicacionesPopulares.jsp">Publicaciones Populares</a></li> 
       <li><a href="ProfesoresMejorCalificados.jsp">Profesores Mejor Calificados</a></li>

@@ -131,9 +131,21 @@ public class Perfil {
     }
 
     
-    public ArrayList<String> ConsultarNombres (String nombre) throws SQLException{
-        UsuarioDAO UsuDAO = new UsuarioDAO();
-        return UsuDAO.ConsultarNombre(nombre);
+    public ArrayList<String> ConsultarNombres (String nombre, String seleccionado) throws SQLException{
+        ArrayList<String> ans = new ArrayList<>();
+        if(seleccionado.equals("nombre")){
+           UsuarioDAO UsuDAO = new UsuarioDAO();
+           ans=UsuDAO.ConsultarNombre(nombre); 
+        }
+        if(seleccionado.equals("correo")){
+           UsuarioDAO UsuDAO = new UsuarioDAO();
+           ans=UsuDAO.ConsultarCorreo(nombre); 
+        }
+        if(seleccionado.equals("habilidad")){
+            HabilidadDAO habDAO = new HabilidadDAO();
+            ans=habDAO.BuscarHab(nombre);
+        }
+        return ans;
     }
     
     /*

@@ -88,4 +88,25 @@ public class HabilidadDAO {
             System.out.println("error al verificar en base de datos");
         }
     }
+    
+    public ArrayList<String> BuscarHab (String nombre) throws SQLException{
+        ArrayList<String> ans = new ArrayList<>();
+        
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            //ResultSet rs = estatuto2.executeQuery("Select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
+            ResultSet rs = estatuto2.executeQuery("select usu_correo from habilidades where hab_"+nombre+" = '1';");
+            rs.next();
+            while(rs.getRow() != 0){                
+                ans.add(rs.getString("usu_correo"));
+                rs.next();
+            }             
+            estatuto2.close();
+            conex.desconectar();
+            return ans;
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se encontro la persona");
+        }
+    }
 }

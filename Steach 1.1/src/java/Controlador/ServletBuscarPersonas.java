@@ -38,11 +38,11 @@ public class ServletBuscarPersonas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String nombre = request.getParameter("textb_buscardor");
-        
+        String seleccionado = request.getParameter("BuscarRadio");
         Perfil perfil = new Perfil();
         ArrayList<String> correos = new ArrayList();
         try {
-            correos = perfil.ConsultarNombres(nombre);
+            correos = perfil.ConsultarNombres(nombre,seleccionado);
         } catch (SQLException ex) {
             Logger.getLogger(ServletBuscarPersonas.class.getName()).log(Level.SEVERE, null, ex);
         }

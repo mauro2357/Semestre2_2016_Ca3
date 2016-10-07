@@ -121,14 +121,12 @@ public class UsuarioDAO implements IUsuarioDAO{
     
     public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException{
         ArrayList<String> nombres = new ArrayList<>();
-        Usuario usu= new Usuario();
-        usu.setUsu_nombre("");
         System.out.println("Nombre: "+nombre);
        
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
             //ResultSet rs = estatuto2.executeQuery("Select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
-            ResultSet rs = estatuto2.executeQuery("SELECT usu_correo FROM db_steach.usuario where usu_nombre like \""+nombre+"%\";");
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.usuario where usu_nombre like '%"+nombre+"%';");
             rs.next();
             while(rs.getRow() != 0){                
                 nombres.add(rs.getString("usu_correo"));
@@ -137,6 +135,27 @@ public class UsuarioDAO implements IUsuarioDAO{
             estatuto2.close();
             conex.desconectar();
             return nombres;
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se encontro la persona");
+        }        
+    }
+    
+    public ArrayList<String> ConsultarCorreo (String nombre) throws SQLException{
+        ArrayList<String> ans = new ArrayList<>();
+       
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            //ResultSet rs = estatuto2.executeQuery("Select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.usuario where usu_correo like '%"+nombre+"%';");
+            rs.next();
+            while(rs.getRow() != 0){                
+                ans.add(rs.getString("usu_correo"));
+                rs.next();
+            }             
+            estatuto2.close();
+            conex.desconectar();
+            return ans;
         } 
         catch (SQLException e) {
             throw new SQLException("No se encontro la persona");
