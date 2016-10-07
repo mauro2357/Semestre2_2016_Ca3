@@ -2,6 +2,7 @@
 package Modelo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,9 +17,7 @@ public class Usuario {
     int usu_veces_suspendido;
     int usu_activo;
     String usu_fecha_clave;
-    
-    
-    //Constructor
+    ArrayList<String> publicaciones;
 
     public Usuario(String usu_nombre, String usu_apellidos, String usu_fecha_nacimiento, String usu_correo, String usu_contra) {
         this.usu_nombre = usu_nombre;
@@ -33,11 +32,11 @@ public class Usuario {
         usu_apellidos = "";
         usu_fecha_nacimiento = "";
         usu_correo = "";
-        usu_contra = "";
-        
+        usu_contra = "";        
         usu_veces_suspendido = 0;
         usu_activo = 1;
         usu_fecha_clave = "";
+        publicaciones = new ArrayList<>(); //no se si debe de llevar <String> revisar.
     }
 
     public String getUsu_nombre() {
@@ -103,6 +102,14 @@ public class Usuario {
     public void setUsu_fecha_clave(String usu_fecha_clave) {
         this.usu_fecha_clave = usu_fecha_clave;
     }
+
+    public ArrayList<String> getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(ArrayList<String> publicaciones) {
+        this.publicaciones = publicaciones;
+    }        
     
     public boolean ValidarMeses(String Correo)
     {
@@ -175,4 +182,6 @@ public class Usuario {
             perfil.setUsuario(usu);
         return perfil;
     }
+    
+    
 }

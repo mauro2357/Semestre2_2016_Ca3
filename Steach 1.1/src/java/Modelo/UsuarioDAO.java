@@ -130,14 +130,10 @@ public class UsuarioDAO implements IUsuarioDAO{
             //ResultSet rs = estatuto2.executeQuery("Select usu_correo,usu_nombre like "+nombre+"%"+" from usuario");
             ResultSet rs = estatuto2.executeQuery("SELECT usu_correo FROM db_steach.usuario where usu_nombre like \""+nombre+"%\";");
             rs.next();
-
-            while(rs.getRow() != 0){
-                
+            while(rs.getRow() != 0){                
                 nombres.add(rs.getString("usu_correo"));
-
                 rs.next();
-            }  
-           
+            }             
             estatuto2.close();
             conex.desconectar();
             return nombres;
@@ -166,5 +162,34 @@ public class UsuarioDAO implements IUsuarioDAO{
         } catch (SQLException ex) {
             return false;
         }
+    }
+    
+    public ArrayList<Publicacion> getPublicacionesPerfilBD(String usu_correo) throws SQLException{
+        ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();
+        //
+        Usuario usu= new Usuario();
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where usu_correo = \""+usu_correo+"\";");
+            
+            rs.next();
+            while(rs.getRow() != 0){  
+                Publicacion pub = new Publicacion();
+                pub.setPub_codigo( rs.getString("Pub_codigo") );
+                pub.setPub_amigo_correo( rs.getString("Pub_amigo_correo") );
+                pub.setPub_usu_correo( rs.getString("Pub_usu_correo") );
+                pub.setPub_comentario( rs.getString("Pub_comentario"));
+                
+                ListaPublicaciones.add(pub);
+                rs.next();
+            }  
+                        
+            estatuto2.close();
+            conex.desconectar();
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se logro encontrar publicaciones al usuario con correo "+usu_correo);
+        }
+        return ListaPublicaciones;
     }
 }
