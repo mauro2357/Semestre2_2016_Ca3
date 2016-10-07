@@ -118,7 +118,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
         
     }
-    
+    @Override
     public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException{
         ArrayList<String> nombres = new ArrayList<>();
         System.out.println("Nombre: "+nombre);
@@ -141,6 +141,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         }        
     }
     
+    @Override
     public ArrayList<String> ConsultarCorreo (String nombre) throws SQLException{
         ArrayList<String> ans = new ArrayList<>();
        

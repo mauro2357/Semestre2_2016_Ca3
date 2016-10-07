@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Andres
  */
-public class HabilidadDAO {
+public class HabilidadDAO implements IBuscarHabilidad {
     Conexion conex;
     
     public HabilidadDAO(){
@@ -89,6 +89,7 @@ public class HabilidadDAO {
         }
     }
     
+    @Override
     public ArrayList<String> BuscarHab (String nombre) throws SQLException{
         ArrayList<String> ans = new ArrayList<>();
         

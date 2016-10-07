@@ -10,13 +10,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Andres
+ * @author HP
  */
-public interface IUsuarioDAO {
+public interface IBuscarHabilidad {
     
-    public Usuario verificarUsuario(String usu_correo) throws SQLException;
-    public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException;
-    public ArrayList<String> ConsultarCorreo (String nombre) throws SQLException;
-
+    public ArrayList<String> BuscarHab (String nombre) throws SQLException;
     
 }
