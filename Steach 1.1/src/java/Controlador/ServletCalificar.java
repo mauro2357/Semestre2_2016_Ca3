@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Perfil;
+import Modelo.PerfilDAO;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,11 +63,13 @@ public class ServletCalificar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String correo = "julian@julian.com";//request.getParameter("Correo");
+        Perfil perfil = (Perfil)request.getSession().getAttribute("Perfil");
+        String correo = perfil.getAmigo().getUsu_correo();
         String select1 = request.getParameter("select1");
         String select2 = request.getParameter("select2");
         String select3 = request.getParameter("select3");
         String select4 = request.getParameter("select4");
+        PerfilDAO perfilDAO = new PerfilDAO();
         double calificacion = Double.parseDouble(select1)+ Double.parseDouble(select2)+
                 Double.parseDouble(select3)+Double.parseDouble(select4);
         double Promedio = calificacion/4;
@@ -73,11 +77,24 @@ public class ServletCalificar extends HttpServlet {
         boolean calificar = UsuDAO.Calificar(correo, Promedio);
         if(calificar)
         {
-            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response); 
+            boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
+            if(SonAmigos){
+                perfil.setTipodeusuario("PerfilAmigo");
+            }
+            else{
+                perfil.setTipodeusuario("PerfilTercero");
+            }
+            perfil.getHabilidad_Amigo().setHab_calificacion(String.valueOf(Promedio));
+            request.getSession().setAttribute("Perfil", perfil);
+            request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);   
         }
         else
         {
-            request.getRequestDispatcher("PerfilVisita.jsp").forward(request, response); 
+            request.getSession().setAttribute("MensajeError", "No se ha podido calificar a "+perfil.getAmigo().getUsu_correo());
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
     }
 

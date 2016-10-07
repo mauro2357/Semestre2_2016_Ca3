@@ -28,6 +28,10 @@
         <servlet-name>ServletDejardeSeguir</servlet-name>
         <servlet-class>Controlador.ServletDejardeSeguir</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAmistad</servlet-name>
+        <servlet-class>Controlador.ServletAmistad</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ServletDejardeSeguir</servlet-name>
         <url-pattern>/ServletDejardeSeguir</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAmistad</servlet-name>
+        <url-pattern>/ServletAmistad</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

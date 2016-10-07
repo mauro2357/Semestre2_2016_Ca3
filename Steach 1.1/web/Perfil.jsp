@@ -73,10 +73,10 @@
         <h4> <%=habilidades_usu %> </h4>
         <br>
         <h3>Calificación</h3>
-        <h4> <%=calif %> </h4>
+        <h4> <%=calif %> </h4>        
         <script>
             if(tipousu == "PerfilAmigo"){
-                document.write('<input type="submit" id="boton_steach" value="Calificar">');  
+                document.write('<input type="submit" id="boton_steach" value="Calificar" onclick=this.form.action="VistaCalificar.jsp" >');  
             }
         </script>
     </div>  

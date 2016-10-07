@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author SONY
  */
 @WebServlet(name = "ServletSeguir", urlPatterns = {"/ServletSeguir"})
-public class ServletSeguir extends HttpServlet {
+public class ServletSeguir extends ServletAmistad {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,51 +63,6 @@ public class ServletSeguir extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        Perfil perfil = new Perfil();
-        perfil = (Perfil)request.getSession().getAttribute("Perfil");
-        PerfilDAO perfilDAO = new PerfilDAO();
-        UsuarioDAO UsuDAO = new UsuarioDAO();
-        
-        if(request.getSession()!=null) request.getSession().invalidate();
-        
-        if(UsuDAO.HacerAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo()) )
-        {
-            boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
-            if(SonAmigos){
-                perfil.setTipodeusuario("PerfilAmigo");
-            }
-            else{
-                perfil.setTipodeusuario("PerfilTercero");
-            }
-                
-            request.getSession().setAttribute("Perfil", perfil);
-            request.getSession().setAttribute("Usuario", perfil.getAmigo());
-            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
-            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
-        }
-        else
-        {
-            request.getSession().setAttribute("MensajeError", "Imposible agregar a "+perfil.getAmigo().getUsu_correo()+"a tu lista de amigos");
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-
-        }
-        
-        
-    }
-
-    /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
@@ -116,5 +71,10 @@ public class ServletSeguir extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    @Override
+    protected boolean ejecutarAmistad(Perfil perfil) {
+        return new UsuarioDAO().HacerAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
+    }
 
 }

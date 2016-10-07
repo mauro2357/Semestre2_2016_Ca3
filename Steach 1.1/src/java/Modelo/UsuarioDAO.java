@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class UsuarioDAO {
+public class UsuarioDAO implements IUsuarioDAO{
     Conexion conex;
     
     public UsuarioDAO(){

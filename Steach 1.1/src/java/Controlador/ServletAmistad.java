@@ -5,12 +5,11 @@
  */
 package Controlador;
 
-import Modelo.*;
+import Modelo.Perfil;
+import Modelo.PerfilDAO;
+import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andres
  */
-public class regisHabilid extends HttpServlet {
+public abstract class ServletAmistad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,30 +32,19 @@ public class regisHabilid extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            String hab_Quimica = (String)request.getParameter("txtb_Quimica");
-            String hab_Matematicas = (String)request.getParameter("txtb_Matematicas");
-            String hab_Programacion = (String)request.getParameter("txtb_Programacion");
-            String hab_Biologia = (String)request.getParameter("txtb_Biologia");
-            String hab_Estadistica = (String)request.getParameter("txtb_Estadistica");
-            String hab_Espanol = (String)request.getParameter("txtb_Espanol");
-            String hab_Fisica = (String)request.getParameter("txtb_fisica");
-            String usu_correo = (String)request.getParameter("lbl_correo");
-            
-            Habilidad hab = new Habilidad();
-            hab.setUsuarioDAO(new UsuarioDAO());
-            Perfil perfil = hab.CrearHabilidad(usu_correo, hab_Fisica, hab_Espanol, hab_Estadistica, hab_Biologia, hab_Programacion, hab_Matematicas, hab_Quimica);
-            
-            if(perfil.getMensaje() != null){
-                request.getSession().setAttribute("MensajeError", perfil.getMensaje());
-                request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-            }
-            
-            request.getSession().setAttribute("Usuario",perfil.getUsuario());
-            request.getSession().setAttribute("hab", perfil.getHabilidad());
-            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);
-            
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ServletAmistad</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ServletAmistad at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -85,8 +73,37 @@ public class regisHabilid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Perfil perfil = new Perfil();
+        perfil = (Perfil)request.getSession().getAttribute("Perfil");
+        PerfilDAO perfilDAO = new PerfilDAO();
+              
+        if(request.getSession()!=null) request.getSession().invalidate();
+        
+        if(ejecutarAmistad(perfil) )
+        {
+            boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
+            if(SonAmigos){
+                perfil.setTipodeusuario("PerfilAmigo");
+            }
+            else{
+                perfil.setTipodeusuario("PerfilTercero");
+            }
+                
+            request.getSession().setAttribute("Perfil", perfil);
+            request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
+        }
+        else
+        {
+            request.getSession().setAttribute("MensajeError", "Imposible agregar a "+perfil.getAmigo().getUsu_correo()+"a tu lista de amigos");
+            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
+
+        }
     }
+    
+    protected abstract boolean ejecutarAmistad(Perfil perfil);
 
     /**
      * Returns a short description of the servlet.

@@ -21,6 +21,8 @@ public class Habilidad {
     String hab_espanol;
     String hab_calificacion;
     
+    private IUsuarioDAO usuarioDAO;
+    
     public Habilidad(){
     usu_correo="";
     hab_fisica="0";
@@ -140,9 +142,8 @@ public class Habilidad {
     public Perfil CrearHabilidad(String usu_correo,String hab_Fisica,String hab_Espanol,String hab_Estadistica,String hab_Biologia,String hab_Programacion,String hab_Matematicas,String hab_Quimica){
         Usuario usu = new Usuario();
         Perfil perfil = new Perfil();
-        UsuarioDAO usudao= new UsuarioDAO();
         try {
-            usu = usudao.verificarUsuario(usu_correo);
+            usu = usuarioDAO.verificarUsuario(usu_correo);
             perfil.setUsuario(usu);
         } catch (SQLException e) {
             perfil.setMensaje(e.getMessage());
@@ -200,4 +201,14 @@ public class Habilidad {
         perfil.setHabilidad(hab);
         return perfil;
     }
+
+    public IUsuarioDAO getUsuarioDAO() {
+        return usuarioDAO;
+    }
+
+    public void setUsuarioDAO(IUsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
+    
+    
 }
