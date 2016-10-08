@@ -25,13 +25,12 @@
                     <a href="#" class="dropbtn">Que quieres Buscar?</a>
                     <div class="dropdown-content">
                         <input type="radio" name="BuscarRadio" value="correo"> Buscar personas por correo
-                        <input type="radio" name="BuscarRadio" value="nombre"> Buscar personas por nombre
+                        <input type="radio" name="BuscarRadio" value="nombre" checked="checked"> Buscar personas por nombre
                         <input type="radio" name="BuscarRadio" value="habilidad"> Buscar personas por habilidad
                     </div>
                 </li>
                 <li><input type="submit" id="boton_registrar" name="btn_buscar" value="Buscar" onclick=this.form.action="ServletBuscarPersonas" ></a>
                 </input>
-                
             </ul>
         </div>
     </div>
