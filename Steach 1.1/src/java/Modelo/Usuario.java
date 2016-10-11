@@ -158,6 +158,16 @@ public class Usuario{
         return MatrizScrip;
     }
     
+    public String MatPublicacionesJScrip(String correo){
+        ArrayList<Publicacion> ListPublicaciones = new ArrayList<>();
+        try {
+            ListPublicaciones=iUsuarioDAO.getPublicacionesPerfilBD(correo);
+        } catch (Exception e) {
+            return "[[\"null\", \"null\", \"no se han podido encontrar publicaciones\"]]";
+        }                
+        return convertirPublicacionesAJavaScrip(ListPublicaciones);
+    }
+    
     public Perfil iniciarSesion(String correo){
         Perfil perfil=new Perfil();
         Usuario usu=new Usuario();
@@ -175,8 +185,6 @@ public class Usuario{
         } catch (SQLException e) {
             perfil.setMensaje(e.getMessage());
         }
-        perfil.setMatrizPublicaciones(convertirPublicaciones(ListPublicaciones));
-        
         perfil.setMatrizScripPublicaciones(convertirPublicacionesAJavaScrip(ListPublicaciones));
 
         Habilidad hab = new Habilidad();

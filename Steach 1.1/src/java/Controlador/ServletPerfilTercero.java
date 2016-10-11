@@ -3,6 +3,9 @@ package Controlador;
 import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +45,9 @@ public class ServletPerfilTercero extends HttpServlet {
             else{
                 perfil.setTipodeusuario("PerfilTercero");
             }
+            
+            perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
+
                 
             request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario", perfil.getAmigo());

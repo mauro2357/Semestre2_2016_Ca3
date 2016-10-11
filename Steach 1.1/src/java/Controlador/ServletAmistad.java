@@ -88,7 +88,7 @@ public abstract class ServletAmistad extends HttpServlet {
             else{
                 perfil.setTipodeusuario("PerfilTercero");
             }
-                
+                        
             request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario", perfil.getAmigo());
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
