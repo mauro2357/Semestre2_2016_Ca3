@@ -52,9 +52,11 @@ public class regisHabilid extends HttpServlet {
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
             
+            perfil.setTipodeusuario("PerfilPropio");  
+            request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario",perfil.getUsuario());
             request.getSession().setAttribute("hab", perfil.getHabilidad());
-            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());            
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);
             
     }
