@@ -97,7 +97,7 @@
     <script>     
         var Matrizpub = <%=perfil.getMatrizScripPublicaciones()%>;
         for(var i=0; i<Matrizpub.length; i++){
-                document.write('<div id="div_publicacion">'+Matrizpub[i][0]+' ha publicado a '+Matrizpub[i][1]+' <br> '+Matrizpub[i][2]+'</div>');
+                document.write('<div id="div_publicacion">'+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
         }	
     </script>
     

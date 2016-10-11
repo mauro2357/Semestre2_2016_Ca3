@@ -47,6 +47,8 @@ public class ServletIniciarSesion extends HttpServlet {
                 request.getRequestDispatcher("Perfil.jsp").forward(request, response);
             }
             else{
+                perfil.setMensaje("El usuario o la clave es incorrecta");
+                request.getSession().setAttribute("MensajeError", perfil.getMensaje());
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
         }

@@ -94,6 +94,7 @@ public abstract class ServletAmistad extends HttpServlet {
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
             request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
+            
         }
         else
         {

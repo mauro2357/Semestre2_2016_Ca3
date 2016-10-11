@@ -212,4 +212,14 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
         return ListaPublicaciones;
     }
+    
+    public void publicar(String correo_amigo, String correo_usuario, String publicacion) throws SQLException{
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            ResultSet rs = estatuto2.executeQuery("");
+        } catch (SQLException e) {
+            throw new SQLException("Imposible hacer la publicacíon");
+        }
+    }
+    
 }
