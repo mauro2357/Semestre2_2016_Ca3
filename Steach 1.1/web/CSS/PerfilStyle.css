@@ -123,10 +123,11 @@ body,html{margin:0; padding:0;}
     position:relative;
     width:480px;
     height:80px;
-    top:-467px;
+    top:-474px;
     left:130px;
     background: #FFF;
     margin:auto;
+    margin-top: 8px;
     border-radius:5px;
     border-color: #080808;
     border-style: ridge;
