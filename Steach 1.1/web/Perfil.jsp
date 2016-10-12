@@ -86,8 +86,8 @@
         if(tipousu != "PerfilTercero"){
             document.write(
             '<div id="div_publicacion">'+        
-                '<input type="text" id="Text_publicacion">'+
-                '<input type="submit" id="boton_steach" value="Publicar">'+
+                '<input type="text" id="Text_publicacion" name="Text_publicacion">'+
+                '<input type="submit" id="boton_steach" value="Publicar" onclick=this.form.action="ServletPublica" >'+
             '</div>'
             );
         }

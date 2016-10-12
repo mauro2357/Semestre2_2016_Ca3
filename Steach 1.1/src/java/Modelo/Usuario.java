@@ -236,11 +236,11 @@ public class Usuario{
             perfil.setUsuario(usu);
         return perfil;
     }
-    public void accionPublicar(String correo_usuario, String correo_amigo, String publicacion){
+    public void accionPublicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException{
         try {
             iUsuarioDAO.publicar(correo_usuario, correo_amigo, publicacion);
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
         }
     }
     

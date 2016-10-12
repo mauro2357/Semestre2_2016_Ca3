@@ -6,12 +6,8 @@
 package Controlador;
 
 import Modelo.Perfil;
-import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andres
  */
-public class ServletPublica extends HttpServlet {
+public class ServletPuertaPerfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +30,21 @@ public class ServletPublica extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Perfil perfil = new Perfil();
-        perfil = (Perfil)request.getSession().getAttribute("Perfil");
-        UsuarioDAO usuDAO = new UsuarioDAO();
-        perfil.getUsuario().setiUsuarioDAO(usuDAO);
-        String Texto_publicacion = request.getParameter("Text_publicacion");
-        
-        try {
-            perfil.getUsuario().accionPublicar(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo(), Texto_publicacion);
             
-            ServletPuertaPerfil serverPuerta = new ServletPuertaPerfil();
-            perfil.setTipodeusuario("PerfilAmigo");  
-            serverPuerta.doGet(request, response);
+            Perfil perfil = new Perfil();
+            perfil = (Perfil)request.getSession().getAttribute("Perfil");
             
-        } catch (SQLException e) {
-            request.getSession().setAttribute("MensajeError", e.getMessage());
-            request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-        }
-        
-        
-
+            if(perfil.getTipodeusuario().equals("PerfilPropio")){
+               request.getSession().setAttribute("Usuario", perfil.getUsuario()); 
+            }
+            else{
+                request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            }
+            
+            request.getSession().setAttribute("Perfil", perfil);
+            request.getSession().setAttribute("hab", perfil.getHabilidad());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

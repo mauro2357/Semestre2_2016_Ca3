@@ -36,6 +36,10 @@
         <servlet-name>ServletPublica</servlet-name>
         <servlet-class>Controlador.ServletPublica</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPuertaPerfil</servlet-name>
+        <servlet-class>Controlador.ServletPuertaPerfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ServletPublica</servlet-name>
         <url-pattern>/ServletPublica</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPuertaPerfil</servlet-name>
+        <url-pattern>/ServletPuertaPerfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

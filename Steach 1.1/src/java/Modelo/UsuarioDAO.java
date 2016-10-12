@@ -189,7 +189,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         //
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = \""+usu_correo+"\";");            
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = '"+usu_correo+"';");            
             rs.next();
             while(rs.getRow() != 0){  
                 Publicacion pub = new Publicacion();
@@ -212,14 +212,16 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
     
     public void publicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException{
+        Statement estatuto2 = conex.getConnection().createStatement();
         try {
-            Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("set @num_fil =(( SELECT count(*) as num_Filas FROM db_steach.publicaciones) + 1); "
+            estatuto2.executeUpdate("set @num_fil =(( SELECT count(*) as num_Filas FROM db_steach.publicaciones) + 1); "
                     + "INSERT INTO `db_steach`.`publicaciones` (`Pub_codigo`, `Pub_usu_correo`, `Pub_amigo_correo`, `Pub_comentario`) "
-                    + "VALUES (@num_fil, '"+correo_usuario+"', '"+correo_amigo+"', '"+publicacion+"');");
+                    + "VALUES (@num_fil, '"+correo_usuario+"', '"+correo_amigo+"', '"+publicacion+"');");            
         } catch (SQLException e) {
             throw new SQLException("Imposible hacer la publicacíon");
         }
+        estatuto2.close();
+        conex.desconectar();
     }
     
 }
