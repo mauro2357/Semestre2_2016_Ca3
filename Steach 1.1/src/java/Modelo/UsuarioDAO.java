@@ -187,11 +187,9 @@ public class UsuarioDAO implements IUsuarioDAO{
     public ArrayList<Publicacion> getPublicacionesPerfilBD(String usu_correo) throws SQLException{
         ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();
         //
-        Usuario usu= new Usuario();
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = \""+usu_correo+"\";");
-            
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = \""+usu_correo+"\";");            
             rs.next();
             while(rs.getRow() != 0){  
                 Publicacion pub = new Publicacion();
@@ -213,10 +211,12 @@ public class UsuarioDAO implements IUsuarioDAO{
         return ListaPublicaciones;
     }
     
-    public void publicar(String correo_amigo, String correo_usuario, String publicacion) throws SQLException{
+    public void publicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException{
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("");
+            ResultSet rs = estatuto2.executeQuery("set @num_fil =(( SELECT count(*) as num_Filas FROM db_steach.publicaciones) + 1); "
+                    + "INSERT INTO `db_steach`.`publicaciones` (`Pub_codigo`, `Pub_usu_correo`, `Pub_amigo_correo`, `Pub_comentario`) "
+                    + "VALUES (@num_fil, '"+correo_usuario+"', '"+correo_amigo+"', '"+publicacion+"');");
         } catch (SQLException e) {
             throw new SQLException("Imposible hacer la publicacíon");
         }

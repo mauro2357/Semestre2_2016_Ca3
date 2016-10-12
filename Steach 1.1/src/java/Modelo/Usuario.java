@@ -3,6 +3,8 @@ package Modelo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -148,8 +150,7 @@ public class Usuario{
     
     public String convertirPublicacionesAJavaScrip( ArrayList<Publicacion> ListaPublicaciones ){
         String MatrizScrip="[";
-        for(int i =0; i<ListaPublicaciones.size(); i++){
-           
+        for(int i =0; i<ListaPublicaciones.size(); i++){           
            MatrizScrip=MatrizScrip+"[\""+ListaPublicaciones.get(i).getPub_amigo_correo()+"\", ";
            MatrizScrip=MatrizScrip+"\""+ListaPublicaciones.get(i).getPub_usu_correo()+"\", ";
            MatrizScrip=MatrizScrip+"\""+ListaPublicaciones.get(i).getPub_comentario()+"\"],";           
@@ -158,14 +159,14 @@ public class Usuario{
         return MatrizScrip;
     }
     
-    public String MatPublicacionesJScrip(String correo){
-        ArrayList<Publicacion> ListPublicaciones = new ArrayList<>();
+    public String MatPublicacionesJScrip(String correo_a){
+        ArrayList<Publicacion> ListPubl = new ArrayList<>();
         try {
-            ListPublicaciones=iUsuarioDAO.getPublicacionesPerfilBD(correo);
+            ListPubl=iUsuarioDAO.getPublicacionesPerfilBD(correo_a);
         } catch (Exception e) {
             return "[[\"null\", \"null\", \"no se han podido encontrar publicaciones\"]]";
-        }                
-        return convertirPublicacionesAJavaScrip(ListPublicaciones);
+        }                        
+        return convertirPublicacionesAJavaScrip(ListPubl);
     }
     
     public Perfil iniciarSesion(String correo){
@@ -234,6 +235,13 @@ public class Usuario{
         if(perfil.getMensaje().equals("YES"))
             perfil.setUsuario(usu);
         return perfil;
+    }
+    public void accionPublicar(String correo_usuario, String correo_amigo, String publicacion){
+        try {
+            iUsuarioDAO.publicar(correo_usuario, correo_amigo, publicacion);
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

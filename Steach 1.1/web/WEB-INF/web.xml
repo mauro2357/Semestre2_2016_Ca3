@@ -32,6 +32,10 @@
         <servlet-name>ServletAmistad</servlet-name>
         <servlet-class>Controlador.ServletAmistad</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPublica</servlet-name>
+        <servlet-class>Controlador.ServletPublica</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletAmistad</servlet-name>
         <url-pattern>/ServletAmistad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPublica</servlet-name>
+        <url-pattern>/ServletPublica</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
