@@ -213,14 +213,20 @@ public class UsuarioDAO implements IUsuarioDAO{
     
     public void publicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException{
         Statement st = conex.getConnection().createStatement();
-        try {            
-            st.executeUpdate("set @num_fil =(( SELECT count(*) as num_Filas FROM db_steach.publicaciones) + 1); "
-                    + "INSERT INTO `db_steach`.`publicaciones` (`Pub_codigo`, `Pub_usu_correo`, `Pub_amigo_correo`, `Pub_comentario`) "
-                    + "VALUES (@num_fil, '"+correo_usuario+"', '"+correo_amigo+"', '"+publicacion+"' );");            
+        ResultSet rs;
+        try {
+            
+            rs = st.executeQuery("SELECT count(*) as num_Filas FROM db_steach.publicaciones");
+            rs.next();
+            String Num = rs.getString(1);
+            int PK = Integer.parseInt(Num) +1;
+            st.executeUpdate("INSERT INTO `db_steach`.`publicaciones` (`Pub_codigo`, `Pub_usu_correo`, `Pub_amigo_correo`, `Pub_comentario`) "
+                    + "VALUES ("+PK+", '"+correo_usuario+"', '"+correo_amigo+"', '"+publicacion+"' );");            
         } catch (SQLException e) {
             throw new SQLException("Imposible hacer la publicacíon");
+            
         }
-        st.close();
+       
         conex.desconectar();
     }
     
