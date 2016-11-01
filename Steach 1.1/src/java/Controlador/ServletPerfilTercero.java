@@ -37,6 +37,8 @@ public class ServletPerfilTercero extends HttpServlet {
         perfil.setUsuario( (Usuario) request.getSession().getAttribute("Usuario") );
         perfil.iniciarPerfilTercero(correotercero);
         PerfilDAO perfilDAO = new PerfilDAO();
+        UsuarioDAO usuDAO= new UsuarioDAO();
+        perfil.getAmigo().setiUsuarioDAO(usuDAO);
         
         boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
             if(SonAmigos){

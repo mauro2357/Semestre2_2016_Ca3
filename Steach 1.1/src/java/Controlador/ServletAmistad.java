@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controlador;
 
 import Modelo.Perfil;
@@ -15,21 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Andres
- */
 public abstract class ServletAmistad extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -47,38 +30,23 @@ public abstract class ServletAmistad extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Perfil perfil = new Perfil();
         perfil = (Perfil)request.getSession().getAttribute("Perfil");
         PerfilDAO perfilDAO = new PerfilDAO();
-              
+        UsuarioDAO usuDAO= new UsuarioDAO();
+        perfil.getAmigo().setiUsuarioDAO(usuDAO);
+                      
         if(request.getSession()!=null) request.getSession().invalidate();
-        
+        perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
         if(ejecutarAmistad(perfil) )
         {
             boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
@@ -87,33 +55,23 @@ public abstract class ServletAmistad extends HttpServlet {
             }
             else{
                 perfil.setTipodeusuario("PerfilTercero");
-            }
-                        
+            }                        
             request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario", perfil.getAmigo());
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
             request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
-            
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);              
         }
         else
         {
             request.getSession().setAttribute("MensajeError", "Imposible agregar a "+perfil.getAmigo().getUsu_correo()+"a tu lista de amigos");
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
-
         }
     }
     
     protected abstract boolean ejecutarAmistad(Perfil perfil);
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }

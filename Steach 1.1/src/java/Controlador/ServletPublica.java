@@ -37,15 +37,28 @@ public class ServletPublica extends HttpServlet {
         Perfil perfil = new Perfil();
         perfil = (Perfil)request.getSession().getAttribute("Perfil");
         UsuarioDAO usuDAO = new UsuarioDAO();
+        perfil.getAmigo().setiUsuarioDAO(usuDAO);
+              
         perfil.getUsuario().setiUsuarioDAO(usuDAO);
         String Texto_publicacion = request.getParameter("Text_publicacion");
         
+        
         try {
             perfil.getUsuario().accionPublicar(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo(), Texto_publicacion);
+            perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
             
+            perfil.setTipodeusuario("PerfilAmigo");
+            request.getSession().setAttribute("Perfil", perfil);
+            request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
+            
+            /*
             ServletPuertaPerfil serverPuerta = new ServletPuertaPerfil();
             perfil.setTipodeusuario("PerfilAmigo");  
             serverPuerta.doGet(request, response);
+            */
             
         } catch (SQLException e) {
             request.getSession().setAttribute("MensajeError", e.getMessage());

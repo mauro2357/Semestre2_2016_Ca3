@@ -185,8 +185,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
     
     public ArrayList<Publicacion> getPublicacionesPerfilBD(String usu_correo) throws SQLException{
-        ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();
-        //
+        ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();        
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
             ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = '"+usu_correo+"';");            
