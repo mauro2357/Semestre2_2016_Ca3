@@ -169,6 +169,16 @@ public class Usuario{
         return convertirPublicacionesAJavaScrip(ListPubl);
     }
     
+    public String MatPublicacionesInicio(String correo_a){
+        ArrayList<Publicacion> ListPubl = new ArrayList<>();
+        try {
+            ListPubl=iUsuarioDAO.getPublicacionesInicioBD(correo_a);
+        } catch (Exception e) {
+            return "[[\"null\", \"null\", \"no se han podido encontrar publicaciones\"]]";
+        }                        
+        return convertirPublicacionesAJavaScrip(ListPubl);
+    }
+    
     public Perfil iniciarSesion(String correo){
         Perfil perfil=new Perfil();
         Usuario usu=new Usuario();

@@ -228,5 +228,34 @@ public class UsuarioDAO implements IUsuarioDAO{
        
         conex.desconectar();
     }
+
+    @Override
+    public ArrayList<Publicacion> getPublicacionesInicioBD(String usu_correo) throws SQLException {
+        ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();        
+        try {
+            Statement estatuto2 = conex.getConnection().createStatement();
+            ResultSet rs = estatuto2.executeQuery("select Pub_codigo, Pub_amigo_correo, Pub_usu_correo, Pub_comentario "
+                    + "from publicaciones p inner join (SELECT amigo_correo as amigos FROM db_steach.amigos where usu_correo = '"+usu_correo+"') a "
+                    + "ON p.Pub_amigo_correo = a.amigos order by Pub_codigo DESC;");            
+            rs.next();
+            while(rs.getRow() != 0){  
+                Publicacion pub = new Publicacion();
+                pub.setPub_codigo( rs.getString("Pub_codigo") );
+                pub.setPub_amigo_correo( rs.getString("Pub_amigo_correo") );
+                pub.setPub_usu_correo( rs.getString("Pub_usu_correo") );
+                pub.setPub_comentario( rs.getString("Pub_comentario"));
+                
+                ListaPublicaciones.add(pub);
+                rs.next();
+            }  
+                        
+            estatuto2.close();
+            conex.desconectar();
+        } 
+        catch (SQLException e) {
+            throw new SQLException("No se logro encontrar publicaciones al usuario con correo "+usu_correo);
+        }
+        return ListaPublicaciones;
+    }
     
 }

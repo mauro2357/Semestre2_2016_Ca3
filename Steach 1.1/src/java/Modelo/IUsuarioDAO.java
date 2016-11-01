@@ -16,6 +16,7 @@ public interface IUsuarioDAO {
     
     public Usuario verificarUsuario(String usu_correo) throws SQLException;
     public ArrayList<Publicacion> getPublicacionesPerfilBD(String usu_correo) throws SQLException;
+    public ArrayList<Publicacion> getPublicacionesInicioBD(String usu_correo) throws SQLException;
     public ArrayList<String> ConsultarNombre (String nombre ) throws SQLException;
     public ArrayList<String> ConsultarCorreo (String nombre) throws SQLException;
     public void publicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException;

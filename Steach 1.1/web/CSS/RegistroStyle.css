@@ -48,30 +48,20 @@
   }
    
   /* contenedor */
-  #contenedor{
-    /*Ancho*/
-    width:600px;
-    /*Margen*/
-    padding:10px; 
-    background:#EFF;
-    margin:20px;
-    border-radius:10px;
-    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    float:left;
-  }
+ 
   
   #contenedorRegistro{
-    width:600px;
-    padding:10px;
-    background:#EFF;
-    margin:20px;
-    border-radius:10px;
-    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
-    float:right;
+    position:relative;
+    width:700px;
+    background: burlywood;
+    margin:auto;
+    margin-top: 8px;
+    border-radius:5px;
+    border-color: #3a7999;
+    border-style: ridge;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5);
+    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5);
+    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5); 
   }
   
 #boton_registrar{
@@ -88,7 +78,7 @@
 
  #boton_registrar:hover{
     color:#EFF;
-    background: #3a7999;
+    background: burlywood;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);

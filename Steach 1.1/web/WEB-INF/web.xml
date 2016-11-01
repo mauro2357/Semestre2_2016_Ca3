@@ -40,6 +40,10 @@
         <servlet-name>ServletPuertaPerfil</servlet-name>
         <servlet-class>Controlador.ServletPuertaPerfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPerfilAInicio</servlet-name>
+        <servlet-class>Controlador.ServletPerfilAInicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrincipal</servlet-name>
         <url-pattern>/ServletPrincipal</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ServletPuertaPerfil</servlet-name>
         <url-pattern>/ServletPuertaPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPerfilAInicio</servlet-name>
+        <url-pattern>/ServletPerfilAInicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
