@@ -52,7 +52,7 @@ public class ServletPublica extends HttpServlet {
                 perfil.setHabilidad_Amigo(perfil.getHabilidad());
             }
             request.getSession().setAttribute("Perfil", perfil);
-            request.getSession().setAttribute("Usuario", perfil.getAmigo());
+            request.getSession().setAttribute("Usuario_amigo", perfil.getAmigo());
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
             request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);  

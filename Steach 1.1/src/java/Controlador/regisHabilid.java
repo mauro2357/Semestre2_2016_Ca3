@@ -55,7 +55,7 @@ public class regisHabilid extends HttpServlet {
             perfil.setAmigo(perfil.getUsuario());
             perfil.setTipodeusuario("PerfilPropio");  
             request.getSession().setAttribute("Perfil", perfil);
-            request.getSession().setAttribute("Usuario",perfil.getUsuario());
+            request.getSession().setAttribute("Usuario_propio",perfil.getUsuario());
             request.getSession().setAttribute("hab", perfil.getHabilidad());
             request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabs());            
             request.getRequestDispatcher("Perfil.jsp").forward(request, response);

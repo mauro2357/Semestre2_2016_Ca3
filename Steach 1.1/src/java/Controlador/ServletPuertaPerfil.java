@@ -35,10 +35,10 @@ public class ServletPuertaPerfil extends HttpServlet {
             perfil = (Perfil)request.getSession().getAttribute("Perfil");
             
             if(perfil.getTipodeusuario().equals("PerfilPropio")){
-               request.getSession().setAttribute("Usuario", perfil.getUsuario()); 
+               request.getSession().setAttribute("Usuario_propio", perfil.getUsuario()); 
             }
             else{
-                request.getSession().setAttribute("Usuario", perfil.getAmigo());
+                request.getSession().setAttribute("Usuario_amigo", perfil.getAmigo());
             }
             
             request.getSession().setAttribute("Perfil", perfil);

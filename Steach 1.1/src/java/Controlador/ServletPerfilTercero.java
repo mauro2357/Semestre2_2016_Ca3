@@ -28,14 +28,13 @@ public class ServletPerfilTercero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        response.setContentType("text/html;charset=UTF-8");        
         Perfil perfil = new Perfil();
         
         String correotercero=request.getParameter("correotercero");
-        perfil=( perfil.iniciarPerfilTercero(correotercero) );
-        perfil.setUsuario( (Usuario) request.getSession().getAttribute("Usuario") );
-        perfil.iniciarPerfilTercero(correotercero);
+        perfil= perfil.iniciarPerfilTercero(correotercero);
+        perfil.setUsuario( (Usuario) request.getSession().getAttribute("Usuario_propio") );
+        //perfil.iniciarPerfilTercero(correotercero);
         PerfilDAO perfilDAO = new PerfilDAO();
         UsuarioDAO usuDAO= new UsuarioDAO();
         perfil.getAmigo().setiUsuarioDAO(usuDAO);
@@ -56,7 +55,8 @@ public class ServletPerfilTercero extends HttpServlet {
 
 
         request.getSession().setAttribute("Perfil", perfil);
-        request.getSession().setAttribute("Usuario", perfil.getAmigo());
+        request.getSession().setAttribute("Usuario_amigo", perfil.getAmigo());
+        request.getSession().setAttribute("Usuario_propio", perfil.getUsuario());
         request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
         request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
         request.getRequestDispatcher("Perfil.jsp").forward(request, response);  

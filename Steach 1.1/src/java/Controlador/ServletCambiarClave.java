@@ -53,7 +53,7 @@ public class ServletCambiarClave extends HttpServlet {
         else
         {
             Perfil perfil = Usu.iniciarSesion(Correo);
-            request.getSession().setAttribute("Usuario", perfil.getUsuario());
+            request.getSession().setAttribute("Usuario_propio", perfil.getUsuario());
             request.getSession().setAttribute("hab", perfil.getHabilidad());
                 
             String habilidades_usu="";

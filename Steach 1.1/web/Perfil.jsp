@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Perfil perfil = (Perfil)request.getSession().getAttribute("Perfil");
-    Usuario usu= (Usuario)request.getSession().getAttribute("Usuario");
+    Usuario usu= (Usuario)request.getSession().getAttribute("Usuario_amigo");
     Habilidad hab= (Habilidad)request.getSession().getAttribute("hab");
     String habilidades_usu = (String)request.getSession().getAttribute("Habilidades_usu");
     String calif = hab.Suspender();
