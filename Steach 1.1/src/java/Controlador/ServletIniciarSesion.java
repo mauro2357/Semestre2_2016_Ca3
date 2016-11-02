@@ -39,6 +39,7 @@ public class ServletIniciarSesion extends HttpServlet {
         }
         else{
             if(perfil.getUsuario().getUsu_contra().equals(contrasena)){
+                perfil.setAmigo(perfil.getUsuario());
                 perfil.setTipodeusuario("PerfilPropio");                
                 request.getSession().setAttribute("Perfil", perfil);
                 request.getSession().setAttribute("Usuario", perfil.getUsuario());

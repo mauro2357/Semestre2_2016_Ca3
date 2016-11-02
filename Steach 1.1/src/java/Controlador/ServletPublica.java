@@ -46,8 +46,11 @@ public class ServletPublica extends HttpServlet {
         try {
             perfil.getUsuario().accionPublicar(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo(), Texto_publicacion);
             perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
-            
             perfil.setTipodeusuario("PerfilAmigo");
+            if(perfil.getUsuario().getUsu_correo().equals(perfil.getAmigo().getUsu_correo())){
+                perfil.setTipodeusuario("PerfilPropio");
+                perfil.setHabilidad_Amigo(perfil.getHabilidad());
+            }
             request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario", perfil.getAmigo());
             request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());

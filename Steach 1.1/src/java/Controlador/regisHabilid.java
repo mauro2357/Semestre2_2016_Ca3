@@ -47,11 +47,12 @@ public class regisHabilid extends HttpServlet {
             hab.setUsuarioDAO(new UsuarioDAO());
             Perfil perfil = hab.CrearHabilidad(usu_correo, hab_Fisica, hab_Espanol, hab_Estadistica, hab_Biologia, hab_Programacion, hab_Matematicas, hab_Quimica);
             
-            if(perfil.getMensaje() != null){
+            if(perfil.getMensaje() != null ){
                 request.getSession().setAttribute("MensajeError", perfil.getMensaje());
                 request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
             }
-            
+            perfil.setHabilidad_Amigo(perfil.getHabilidad());
+            perfil.setAmigo(perfil.getUsuario());
             perfil.setTipodeusuario("PerfilPropio");  
             request.getSession().setAttribute("Perfil", perfil);
             request.getSession().setAttribute("Usuario",perfil.getUsuario());

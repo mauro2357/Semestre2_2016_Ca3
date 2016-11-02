@@ -45,6 +45,8 @@ public class ServletRegistrar extends HttpServlet {
         
         if(perfil.getMensaje().equals("YES"))
         {
+            PerfilDAO pDAO = new PerfilDAO();
+            pDAO.HacerAmigos(correo, correo);
             request.getSession().setAttribute("Usuario", perfil.getUsuario());
             request.getRequestDispatcher("ingHabilidades.jsp").forward(request, response);
         }

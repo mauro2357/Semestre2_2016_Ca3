@@ -188,7 +188,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         ArrayList<Publicacion> ListaPublicaciones = new ArrayList<>();        
         try {
             Statement estatuto2 = conex.getConnection().createStatement();
-            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = '"+usu_correo+"';");            
+            ResultSet rs = estatuto2.executeQuery("SELECT * FROM db_steach.publicaciones where Pub_amigo_correo = '"+usu_correo+"' order by Pub_codigo DESC;");            
             rs.next();
             while(rs.getRow() != 0){  
                 Publicacion pub = new Publicacion();

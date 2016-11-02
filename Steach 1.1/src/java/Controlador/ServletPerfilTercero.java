@@ -41,22 +41,26 @@ public class ServletPerfilTercero extends HttpServlet {
         perfil.getAmigo().setiUsuarioDAO(usuDAO);
         
         boolean SonAmigos = perfilDAO.SonAmigos(perfil.getUsuario().getUsu_correo(), perfil.getAmigo().getUsu_correo());
-            if(SonAmigos){
-                perfil.setTipodeusuario("PerfilAmigo");
-            }
-            else{
-                perfil.setTipodeusuario("PerfilTercero");
-            }
-            
-            perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
+        if(perfil.getUsuario().getUsu_correo().equals(perfil.getAmigo().getUsu_correo())){
+            perfil.setTipodeusuario("PerfilPropio");
+            perfil.setHabilidad(perfil.getHabilidad_Amigo());
+        }
+        else if(SonAmigos){
+            perfil.setTipodeusuario("PerfilAmigo");
+        }
+        else{
+            perfil.setTipodeusuario("PerfilTercero");
+        }
 
-                
-            request.getSession().setAttribute("Perfil", perfil);
-            request.getSession().setAttribute("Usuario", perfil.getAmigo());
-            request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
-            request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
-            request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
-        
+        perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
+
+
+        request.getSession().setAttribute("Perfil", perfil);
+        request.getSession().setAttribute("Usuario", perfil.getAmigo());
+        request.getSession().setAttribute("hab", perfil.getHabilidad_Amigo());
+        request.getSession().setAttribute("Habilidades_usu", perfil.ListaHabsAmigo());
+        request.getRequestDispatcher("Perfil.jsp").forward(request, response);  
+
         
         
         

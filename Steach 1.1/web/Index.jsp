@@ -44,9 +44,7 @@
             y da en la opcion "Quienes Somos". <br></h3>
             A continuación los videos.
             <h4 align="left">El primero es The Black Eyes Peas, Escúchalo</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/uSD4vsh1zDA" frameborder="0" allowfullscreen></iframe>
-            <h4 align="left">El segundo es The Black Eyes Peas pero con pump it, Escúchalo</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZaI2IlHwmgQ" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=xiLOYVskx44" frameborder="0" allowfullscreen></iframe>
         </center>
         
     </div>
