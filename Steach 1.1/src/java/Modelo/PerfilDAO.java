@@ -44,7 +44,7 @@ public class PerfilDAO {
     public boolean EliminarAmigo(String Correousu, String CorreoAmigo){
         try {
             Statement st = conex.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM `db_steach`.`amigos` WHERE `amigo_correo`=\""+CorreoAmigo+"\" and`usu_correo`=\""+Correousu+"\";");
+            st.executeUpdate("DELETE FROM `db_steach`.`amigos` WHERE `amigo_correo`='"+CorreoAmigo+"' and`usu_correo`= '"+Correousu+"';");
             return true;
         } catch (SQLException ex) {
             return false;

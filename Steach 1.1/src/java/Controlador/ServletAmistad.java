@@ -44,6 +44,7 @@ public abstract class ServletAmistad extends HttpServlet {
         PerfilDAO perfilDAO = new PerfilDAO();
         UsuarioDAO usuDAO= new UsuarioDAO();
         perfil.getAmigo().setiUsuarioDAO(usuDAO);
+        perfil.getUsuario().setiUsuarioDAO(usuDAO);
                       
         if(request.getSession()!=null) request.getSession().invalidate();
         perfil.setMatrizScripPublicaciones(perfil.getAmigo().MatPublicacionesJScrip(perfil.getAmigo().getUsu_correo() ));
@@ -64,7 +65,7 @@ public abstract class ServletAmistad extends HttpServlet {
         }
         else
         {
-            request.getSession().setAttribute("MensajeError", "Imposible agregar a "+perfil.getAmigo().getUsu_correo()+"a tu lista de amigos");
+            request.getSession().setAttribute("MensajeError", "Imposible ejecutar accion a "+perfil.getAmigo().getUsu_correo());
             request.getRequestDispatcher("IngresoError.jsp").forward(request, response);
         }
     }
