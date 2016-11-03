@@ -30,9 +30,10 @@
     <div id="contenedor">
         <h1>Bienvenido a Steach</h1>
         <p><strong>Steach, una aplicacion para el aprendizaje</strong> desarrollada por Ca3 equipada con los servicios necesarios para que puedas contactar a personas que te ensenen lo que necesitas. </p>
+        <h3>Gracias por registrarse en nuestra aplicación</h3>
     </div>
     <div id="contenedor">
-        <p> Hola  <strong> <%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%> </strong> ingresa tus habilidades, marca en el recuadro un 1 si sabes de este tema y quieres enseñar acerca de él.
+        <p> Hola  <strong> <%=usu.getUsu_nombre()%> <%=usu.getUsu_apellidos()%> </strong> ingresa tus habilidades, selecciona uno de las  temas que dominas y quieres enseñar acerca de él.
         </p>
     </div>
     <div id="contenedor3">
