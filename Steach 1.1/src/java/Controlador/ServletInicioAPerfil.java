@@ -5,19 +5,22 @@
  */
 package Controlador;
 
-import Modelo.*;
+import Modelo.Perfil;
+import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author HP
+ * @author SONY
  */
-public class ServletPerfilAInicio extends HttpServlet {
+@WebServlet(name = "ServletInicioAPerfil", urlPatterns = {"/ServletInicioAPerfil"})
+public class ServletInicioAPerfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,18 +31,26 @@ public class ServletPerfilAInicio extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       UsuarioDAO usuDAO = new UsuarioDAO();
-       Perfil P = new Perfil();
-       P = (Perfil)request.getSession().getAttribute("Perfil");
-       P.getUsuario().setiUsuarioDAO(usuDAO);
-       P.setHabilidad(P.LlenarHabInicio(P.getUsuario().getUsu_correo()));
-       String PubScript = P.getUsuario().MatPublicacionesInicio(P.getUsuario().getUsu_correo());
-       P.setMatrizScripPublicaciones(PubScript);
-       
-       request.getSession().setAttribute("Perfil", P);
-       request.getRequestDispatcher("InicioLoggin.jsp").forward(request, response);
-       
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        UsuarioDAO usuDAO = new UsuarioDAO();
+        Perfil P = new Perfil();
+        P = (Perfil)request.getSession().getAttribute("Perfil");
+        P.getUsuario().setiUsuarioDAO(usuDAO);
+        String PubScript = P.getUsuario().MatPublicacionesJScrip(P.getUsuario().getUsu_correo());
+        P.setMatrizScripPublicaciones(PubScript);
+        P.setTipodeusuario("PerfilPropio");
+        request.getSession().setAttribute("Perfil", P);
+        request.getSession().setAttribute("Usuario_amigo", P.getUsuario());
+        request.getSession().setAttribute("Usuario_propio", P.getUsuario());
+        request.getSession().setAttribute("hab", P.getHabilidad());
+        request.getSession().setAttribute("Habilidades_usu", P.ListaHabs());
+        request.getRequestDispatcher("Perfil.jsp").forward(request, response);
+
+
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

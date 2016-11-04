@@ -195,4 +195,11 @@ public class Perfil {
         }
         return perfil;
     }
+    
+    public Habilidad LlenarHabInicio (String correo){
+        Habilidad hab = new Habilidad();
+        HabilidadDAO habDAO = new HabilidadDAO();
+        hab=habDAO.ObtenerHabilidad(correo);
+        return hab;
+    }
 }
