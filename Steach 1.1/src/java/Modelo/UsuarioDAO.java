@@ -209,7 +209,6 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
         return ListaPublicaciones;
     }
-    
     public void publicar(String correo_usuario, String correo_amigo, String publicacion) throws SQLException{
         Statement st = conex.getConnection().createStatement();
         ResultSet rs;
@@ -256,6 +255,29 @@ public class UsuarioDAO implements IUsuarioDAO{
             throw new SQLException("No se logro encontrar publicaciones al usuario con correo "+usu_correo);
         }
         return ListaPublicaciones;
+    }
+    
+    public String GetVectorScriptNotifiaciones(String Correo)
+    {
+        
+        try {
+            Statement st = conex.getConnection().createStatement();
+            ResultSet rs;
+            rs = st.executeQuery("SELECT Pub_usu_correo FROM db_steach.publicaciones where "
+                    + "Pub_amigo_correo='"+Correo+"' and Pub_usu_correo != '"+Correo+"'"
+                    + " order by Pub_codigo DESC");
+            rs.next();
+            String Retorno ="[";
+            while(rs.getRow() != 0){  
+                String Partial = rs.getString(1);
+                Retorno = Retorno+"\""+Partial+"\",";
+                rs.next();
+            } 
+            Retorno += "]";
+            return Retorno;
+        } catch (SQLException ex) {
+            return "Null";
+        }
     }
     
 }

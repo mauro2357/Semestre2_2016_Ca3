@@ -21,7 +21,7 @@
         <div class="info-usuario">
             <ul class="navegacion">
                 <li><a href="ServletPerfilAInicio">Inicio</a></li>
-                <li><a href="#">Notificaciones</a></li>
+                <li><a href="ServletNotificaciones?Correo=<%=perfil.getUsuario().getUsu_correo()%>">>Notificaciones</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Opciones</a>
                     <div class="dropdown-content" id="myDropdown">

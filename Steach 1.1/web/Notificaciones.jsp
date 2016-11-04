@@ -1,20 +1,14 @@
-<%-- 
-    Document   : InicioLoggin
-    Created on : 29/09/2016, 11:43:46 AM
-    Author     : HP
---%>
-
 <%@page import="Modelo.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Perfil perfil = (Perfil)request.getSession().getAttribute("Perfil");
+    //String Correo = request.getSession().getAttribute("Correo");
+    String Vector = (String)request.getSession().getAttribute("VectorScript");
 %>
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>Inicio</title>
-    <link href="CSS/InicioLogginStyle.css" type="text/css" rel="stylesheet" >
+    <title>Perfil</title>
+    <link href="CSS/PerfilStyle.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
     <div id="barra_superior">
@@ -22,12 +16,9 @@
             <li><a href="Index.jsp" id = "imagen"><img src="http://g01.a.alicdn.com/kf/HTB1sQEGHVXXXXXyXpXXq6xXFXXXL/Para-el-caso-de-huawei-ascend-mate-7-3d-minions-cartoon-stitch-sulley-tigger-perro-zebra.jpg_50x50.jpg"></a></li>
         </ul>
         <div class="info-usuario">
-            <div id ="foto-perfil">
-                <a href="Perfil.jsp">Nombre</a>
-            </div>
             <ul class="navegacion">
-                <li><a href="ServletPerfilTercero?correotercero=<%=perfil.getUsuario().getUsu_correo()%>"><%=perfil.getUsuario().getUsu_nombre() + " " + perfil.getUsuario().getUsu_apellidos() %></a></li>
-                <li><a href="ServletNotificaciones?Correo=<%=perfil.getUsuario().getUsu_correo()%>">Notificaciones</a></li>
+                <li><a href="ServletPerfilAInicio">Inicio</a></li>
+                <li><a href="#">Notificaciones</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Opciones</a>
                     <div class="dropdown-content" id="myDropdown">
@@ -45,15 +36,10 @@
             </ul>
         </div>
     </div>
-    <div id ="div_publicacion">
-        <input type="text" id="Text_publicacion" name="Text_publicacion">
-        <input type="submit" id="boton-pub" value="Publicar" onclick=this.form.action="ServletPublica" >
-    </div>
-    
     <script>     
-        var Matrizpub = <%=perfil.getMatrizScripPublicaciones()%>;
+        var Matrizpub = <%=Vector%>;
         for(var i=0; i<Matrizpub.length; i++){
-                document.write('<div id="conte">'+"<a href=ServletPerfilTercero?correotercero="+Matrizpub[i][1]+">"+Matrizpub[i][1]+"</a>"+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
+                document.write('<div id="div_notificacion">'+Matrizpub[i]+' te publicado <br> </div>');
         }	
     </script>
     
@@ -73,8 +59,6 @@
             }
           }
         }
-    </script>
-    
-
+    </script>     
 </body>
 </html>
