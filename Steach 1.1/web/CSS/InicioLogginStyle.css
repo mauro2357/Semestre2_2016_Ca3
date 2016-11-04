@@ -98,6 +98,20 @@ body,html{margin:0; padding:0;}
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5); 
   }
+  #conteV {
+    position:relative;
+    padding-top:30px;
+    width:700px;
+    background: #EFF;
+    margin:auto;
+    margin-top: 8px;
+    border-radius:5px;
+    border-color: #3a7999;
+    border-style: ridge;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5);
+    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5);
+    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.5); 
+  }
   
   #div_publicacion {
     position:relative;
@@ -129,7 +143,7 @@ body,html{margin:0; padding:0;}
   
   #boton-pub{
     background:#3a7999;
-    color: #EFF;
+    color: white;
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
@@ -138,9 +152,30 @@ body,html{margin:0; padding:0;}
     transition: all 500ms ease;
     text-decoration:none; 
    }
-  
+   
    #boton-pub:hover{
-    background: #000;
+    background: black;
+    color: white;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+    box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
+  }
+  
+  #boton-Vivo{
+    background:red;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    text-decoration:none; 
+   }
+   
+   #boton-Vivo:hover{
+    background: black;
+    color: white;
     -webkit-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     -moz-box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);
     box-shadow: 0px 3px 8px 1px rgba(0 ,0 , 0, 0.3);

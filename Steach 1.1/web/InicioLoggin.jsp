@@ -45,15 +45,16 @@
             </ul>
         </div>
     </div>
-    <div id ="div_publicacion">
-        <input type="text" id="Text_publicacion" name="Text_publicacion">
-        <input type="submit" id="boton-pub" value="Publicar" onclick=this.form.action="ServletPublica" >
-    </div>
-    
+    <!--<div id="conteV"> <a href=ServletPerfilTercero?correotercero='+Matrizpub[i][1]+">"+Matrizpub[i][1]+"</a>"+' ha publicado a '+Matrizpub[i][0]+' <br><center><iframe width="560" height="315" src="Matrizpub[i][2]" frameborder="0" allowfullscreen></iframe></center></div>-->         
     <script>     
         var Matrizpub = <%=perfil.getMatrizScripPublicaciones()%>;
         for(var i=0; i<Matrizpub.length; i++){
-                document.write('<div id="conte">'+"<a href=ServletPerfilTercero?correotercero="+Matrizpub[i][1]+">"+Matrizpub[i][1]+"</a>"+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
+            if(Matrizpub[i][2].indexOf("www.youtube.com")>=0){
+                link = "https://www.youtube.com/embed/"+Matrizpub[i][2].substring(32);
+                document.write('<div id="conteV">'+Matrizpub[i][1]+">"+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+'<center><iframe width="560" height="315" src="'+link+'" frameborder="0" allowfullscreen></iframe></center></div>');
+            }
+            else
+                document.write('<div id="conte">'+Matrizpub[i][1]+">"+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
         }	
     </script>
     

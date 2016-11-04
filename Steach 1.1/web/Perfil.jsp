@@ -97,7 +97,12 @@
     <script>     
         var Matrizpub = <%=perfil.getMatrizScripPublicaciones()%>;
         for(var i=0; i<Matrizpub.length; i++){
-                document.write('<div id="div_publicacion">'+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
+            if(Matrizpub[i][2].indexOf("www.youtube.com")>=0){
+                link = "https://www.youtube.com/embed/"+Matrizpub[i][2].substring(32);
+                document.write('<div id="conteV">'+Matrizpub[i][1]+">"+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+'<center><iframe width="460" height="315" src="'+link+'" frameborder="0" allowfullscreen></iframe></center></div>');
+            }
+            else
+                document.write('<div id="div_publicacion">'+Matrizpub[i][1]+">"+Matrizpub[i][1]+' ha publicado a '+Matrizpub[i][0]+' <br> '+Matrizpub[i][2]+'</div>');
         }	
     </script>
     
